@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Snowman
 {
-    public interface IObserver
+    public class Client
     {
-        void update();
+       
     }
 }
