@@ -1,0 +1,14 @@
+﻿<Page x:Class="Snowman.ScoresPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Snowman"
+        mc:Ignorable="d"
+        Title="ScoresPage" Height="450" Width="800"
+        Background="WhiteSmoke">
+    
+    <Grid>
+        <TextBlock Text="Scores Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+    </Grid>
+</Page>

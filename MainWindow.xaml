@@ -1,9 +1,43 @@
-﻿<NavigationWindow x:Class="Snowman.MainWindow"
+﻿<Window x:Class="Snowman.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snowman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-</NavigationWindow>
+        Title="Snowman" Height="650" Width="1200"
+        Background="WhiteSmoke">
+
+    <Grid>
+        <Button x:Name="StartGameButton"
+                Content="START GAME"
+                Click="StartGameButton_Click"
+                Width="200"
+                Height="30"
+                Margin="300,121,300,283"
+               />
+        
+        <Button x:Name="ScoresButton"
+                Click="ScoresButton_Click"
+                Content="SCORES" 
+                Width="200"
+                Height="30"
+                Margin="300,169,300,235"/>
+        
+        <Button x:Name="SettingsButton"
+                Content="SETTINGS"
+                Click="SettingsButton_Click"
+                Width="200"
+                Height="30"
+                Margin="300,217,300,187"/>
+
+        <Button x:Name="ExitButton"
+                Content="EXIT"
+                Click="ExitButton_Click"
+                Width="200" 
+                Height="30"
+                Margin="300,316,300,88"/>
+        
+    </Grid>
+
+</Window>
