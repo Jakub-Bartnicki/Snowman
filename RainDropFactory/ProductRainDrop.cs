@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snowman
+namespace Snowman.RainFropFactory
 {
-    interface IProduct
+    class ProductRainDrop
     {
     }
 }

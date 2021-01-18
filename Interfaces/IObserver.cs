@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snowman
+namespace Snowman.Interfaces
 {
-    class ConstructorRainDrop
+    public interface IObserver
     {
+        void Update();
     }
 }

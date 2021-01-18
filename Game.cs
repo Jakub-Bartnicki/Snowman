@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Snowman
 {
-    public interface IObserver
+    class Game
     {
-        void update();
     }
 }
