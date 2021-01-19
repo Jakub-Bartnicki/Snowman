@@ -1,4 +1,5 @@
 ﻿using Snowman.GameLevel;
+using Snowman.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

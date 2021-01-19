@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snowman.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
