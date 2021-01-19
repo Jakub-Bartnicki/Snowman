@@ -9,15 +9,18 @@ namespace Snowman
     public class Game
     {
         // private List<RainDrop> rainDropList;
-        IGameBuilder gameBuilder;
+        private static IGameBuilder gameBuilder = new GameBuilder();
+
+        public static IGameBuilder GameBuilder
+        {
+            get
+            {
+                return gameBuilder;
+            }
+        }
 
         public Game()
         {
-            gameBuilder = new GameBuilder();
-            gameBuilder.setDifficultyEasy();
-            gameBuilder.setGamemodeOn();
         }
-
-
     }
 }

@@ -9,6 +9,6 @@
       Title="GamePage">
 
     <Grid>
-        
+        <TextBlock Text="GAME PAGE" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Page>

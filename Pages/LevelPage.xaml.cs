@@ -43,9 +43,9 @@ namespace Snowman.Pages
             EasyLevelButton.IsChecked = false;
         }
 
-        private void StartGameButton_Click(object sender, RoutedEventArgs e)
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -53,9 +53,29 @@ namespace Snowman.Pages
             this.NavigationService.Navigate(new MenuPage(mainWindow));
         }
 
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
+            if (EasyLevelButton.IsChecked == true) {
+                Game.GameBuilder.setDifficultyEasy();
 
+            } else if(MediumLevelButton.IsChecked == true){
+                Game.GameBuilder.setDifficultyNormal();
+
+            } else if(HardLevelButton.IsChecked == true){
+                Game.GameBuilder.setDifficultyHard();
+
+            } else {
+                MessageBox.Show("You have to choose game level");
+                return;
+            }
+            if(SnowmanCheckBox.IsChecked == true)
+            {
+                Game.GameBuilder.setGamemodeOn();
+            } else
+            {
+                Game.GameBuilder.setGamemodeOff();
+            }
+            this.NavigationService.Navigate(new GamePage());
         }
     }
 }

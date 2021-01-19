@@ -15,6 +15,7 @@
                 Click="EasyLevel_Click"
                 Height="30"
                 Width="120"
+                Background="Gray"
                 Margin="336,78,336,342"
                />
 
@@ -23,6 +24,7 @@
                 Click="MediumLevel_Click"
                 Height="30"
                 Width="120"
+                Background="Gray"
                 Margin="336,132,336,288"
                />
 
@@ -31,10 +33,11 @@
                 Click="HardLevel_Click"
                 Height="30"
                 Width="120"
+                Background="Gray"
                 Margin="336,188,336,232"
                />
         <Viewbox Width="200" Height="30" Margin="300,242,300,178">
-            <CheckBox Content="Snowman boost and block" Click="CheckBox_Click" Foreground="White"/>
+            <CheckBox x:Name="SnowmanCheckBox" Content="Snowman boost and block" Click="CheckBox_Click" Foreground="White"/>
         </Viewbox>
 
         <Button x:Name="StartGameButton"
