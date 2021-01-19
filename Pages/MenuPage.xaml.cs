@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snowman
+namespace Snowman.Pages
 {
     /// <summary>
     /// Interaction logic for MenuPage.xaml
@@ -28,7 +28,7 @@ namespace Snowman
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("START GAME");
+            this.NavigationService.Navigate(new LevelPage());
         }
 
         private void ScoresButton_Click(object sender, RoutedEventArgs e)

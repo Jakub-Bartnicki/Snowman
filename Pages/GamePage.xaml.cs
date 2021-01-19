@@ -8,25 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Snowman.Pages
 {
     /// <summary>
-    /// Interaction logic for ScoresPage.xaml
+    /// Interaction logic for GamePage.xaml
     /// </summary>
-    public partial class ScoresPage : Page
+    public partial class GamePage : Page
     {
-        MainWindow mainWindow;
-        public ScoresPage(MainWindow mainWindow)
+        public GamePage()
         {
-            this.mainWindow = mainWindow;
             InitializeComponent();
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new MenuPage(mainWindow));
         }
     }
 }

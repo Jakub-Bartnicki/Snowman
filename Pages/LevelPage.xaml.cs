@@ -8,25 +8,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Snowman.Pages
 {
     /// <summary>
-    /// Interaction logic for ScoresPage.xaml
+    /// Interaction logic for LevelPage.xaml
     /// </summary>
-    public partial class ScoresPage : Page
+    public partial class LevelPage : Page
     {
-        MainWindow mainWindow;
-        public ScoresPage(MainWindow mainWindow)
+        public LevelPage()
         {
-            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void EasyLevel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MenuPage(mainWindow));
+
+        }
+
+        private void MediumLevel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HardLevel_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

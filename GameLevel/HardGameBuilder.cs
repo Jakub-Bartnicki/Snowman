@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snowman
+namespace Snowman.Interfaces
 {
     public class HardGameBuilder : IGameBuilder
     {

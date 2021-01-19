@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snowman
+namespace Snowman.Pages
 {
     /// <summary>
     /// Interaction logic for SettingsPage.xaml

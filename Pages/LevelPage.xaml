@@ -1,0 +1,48 @@
+﻿<Page x:Class="Snowman.Pages.LevelPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Snowman.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LevelPage">
+
+    <Grid>
+        <TextBlock Text="Set game level" HorizontalAlignment="Center" Foreground="White" FontSize="20" Margin="0,40,0,-40"/>
+        <Button x:Name="EasyLevel"
+                Content="EASY"
+                Click="EasyLevel_Click"
+                Width="200"
+                Height="30"
+                Margin="300,78,300,342"
+               />
+
+        <Button x:Name="MediumLevel"
+                Content="MEDIUM"
+                Click="MediumLevel_Click"
+                Width="200"
+                Height="30"
+                Margin="300,132,300,288"
+               />
+
+        <Button x:Name="HardLevel"
+                Content="HARD"
+                Click="HardLevel_Click"
+                Width="200"
+                Height="30"
+                Margin="300,188,300,232"
+               />
+        <Viewbox Width="200" Height="30" Margin="300,242,300,178">
+            <CheckBox Content="Snowman boost and block" Foreground="White"/>
+        </Viewbox>
+
+        <Button x:Name="StartGame"
+                Content="START GAME"
+                Click="EasyLevel_Click"
+                Width="200"
+                Height="30"
+                Margin="300,328,300,92"
+               />
+    </Grid>
+</Page>
