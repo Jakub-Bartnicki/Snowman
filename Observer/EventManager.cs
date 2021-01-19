@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snowman.RainFropFactory
+namespace Snowman.Observer
 {
-    class ProductRainDrop
+    class EventManager
     {
     }
 }

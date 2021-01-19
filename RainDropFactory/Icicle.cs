@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snowman.Interfaces
+namespace Snowman.RainDropFactory
 {
-    interface IGameBuilder
+    class Icicle
     {
     }
 }

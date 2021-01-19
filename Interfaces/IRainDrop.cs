@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Snowman.Interfaces
 {
-    interface IGameBuilder
+    interface IRainDrop
     {
     }
 }
