@@ -27,5 +27,10 @@ namespace Snowman
         {
             this.NavigationService.Navigate(new MenuPage());
         }
+
+        private void ChangeThemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

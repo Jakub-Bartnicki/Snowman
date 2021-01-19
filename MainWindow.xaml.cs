@@ -30,9 +30,5 @@ namespace Snowman
             Main.NavigationService.Navigate(new MenuPage());
         }
 
-        /*private void Snow_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.NavigationService.Navigate(new MenuPage());
-        }*/
     }
 }

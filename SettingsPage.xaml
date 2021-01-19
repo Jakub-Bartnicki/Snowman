@@ -9,13 +9,20 @@
       Title="SettingsPage">
 
     <Grid>
-        <TextBlock Text="Settings Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+        <TextBlock Text="Settings Page" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Margin="0,66,0,0"/>
+        <Button x:Name="ChangeThemeButton"
+                Content="CHANGE THEME"
+                Click="ChangeThemeButton_Click"
+                Width="200"
+                Height="30"
+                Margin="300,195,300,225"
+               />
         <Button x:Name="BackButton"
                 Content="BACK"
                 Click="BackButton_Click"
                 Width="200"
                 Height="30"
-                Margin="300,280,300,140"
+                Margin="300,270,300,150"
                />
     </Grid>
 </Page>
