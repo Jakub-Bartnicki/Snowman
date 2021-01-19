@@ -25,24 +25,9 @@ namespace Snowman
             InitializeComponent();
         }
 
-        private void StartGameButton_Click(object sender, RoutedEventArgs e)
+        private void MyWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("START GAME");
-        }
-
-        private void ScoresButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("SCORES");
-        }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("SETTINGS");
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown();
+            Main.NavigationService.Navigate(new MenuPage());
         }
     }
 }

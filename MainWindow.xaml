@@ -8,36 +8,6 @@
         Title="Snowman" Height="650" Width="1200"
         Background="WhiteSmoke">
 
-    <Grid>
-        <Button x:Name="StartGameButton"
-                Content="START GAME"
-                Click="StartGameButton_Click"
-                Width="200"
-                Height="30"
-                Margin="300,121,300,283"
-               />
-        
-        <Button x:Name="ScoresButton"
-                Click="ScoresButton_Click"
-                Content="SCORES" 
-                Width="200"
-                Height="30"
-                Margin="300,169,300,235"/>
-        
-        <Button x:Name="SettingsButton"
-                Content="SETTINGS"
-                Click="SettingsButton_Click"
-                Width="200"
-                Height="30"
-                Margin="300,217,300,187"/>
-
-        <Button x:Name="ExitButton"
-                Content="EXIT"
-                Click="ExitButton_Click"
-                Width="200" 
-                Height="30"
-                Margin="300,316,300,88"/>
-        
-    </Grid>
+    <Frame x:Name="Main"/>
 
 </Window>
