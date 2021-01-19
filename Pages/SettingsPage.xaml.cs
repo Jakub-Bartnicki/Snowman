@@ -11,26 +11,34 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snowman
+namespace Snowman.Pages
 {
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
     /// </summary>
     public partial class SettingsPage : Page
     {
-        public SettingsPage()
+        MainWindow mainWindow;
+
+        public SettingsPage(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MenuPage());
+            this.NavigationService.Navigate(new MenuPage(mainWindow));
         }
 
-        private void ChangeThemeButton_Click(object sender, RoutedEventArgs e)
+        private void LightThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            mainWindow.setLightTheme();
+        }
+
+        private void DarkThemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.setDarkTheme();
         }
     }
 }

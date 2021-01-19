@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Snowman
 {
-    public class Client
+    class Snowman
     {
-       
     }
 }

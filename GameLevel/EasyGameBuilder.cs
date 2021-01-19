@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Snowman.Interfaces
 {
-    public interface IObserver
+    public class EasyGameBuilder : IGameBuilder
     {
-        void Update();
     }
 }

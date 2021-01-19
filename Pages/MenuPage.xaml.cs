@@ -11,31 +11,34 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snowman
+namespace Snowman.Pages
 {
     /// <summary>
     /// Interaction logic for MenuPage.xaml
     /// </summary>
     public partial class MenuPage : Page
     {
-        public MenuPage()
+        MainWindow mainWindow;
+
+        public MenuPage(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("START GAME");
+            this.NavigationService.Navigate(new LevelPage());
         }
 
         private void ScoresButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ScoresPage());
+            this.NavigationService.Navigate(new ScoresPage(mainWindow));
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new SettingsPage());
+            this.NavigationService.Navigate(new SettingsPage(mainWindow));
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snowman
+namespace Snowman.Interfaces
 {
-    public interface IGameBuilder
+    interface IGameBuilder
     {
         void setGamemodeOn();
 

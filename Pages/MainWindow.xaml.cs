@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snowman
+namespace Snowman.Pages
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,7 +27,18 @@ namespace Snowman
 
         private void Main_Loaded(object sender, RoutedEventArgs e)
         {
-            Main.NavigationService.Navigate(new MenuPage());
+            setLightTheme();
+            Main.NavigationService.Navigate(new MenuPage(this));
+        }
+
+        public void setLightTheme()
+        {
+            this.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/day.jpg")));
+        }
+
+        public void setDarkTheme()
+        {
+            this.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/night.jpg")));
         }
 
     }
