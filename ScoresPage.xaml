@@ -8,7 +8,7 @@
         Title="ScoresPage" Height="450" Width="800">
     
     <Grid>
-        <TextBlock Text="Scores Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+        <TextBlock Text="Scores Page" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="32"/>
         <Button x:Name="BackButton"
                 Content="BACK"
                 Click="BackButton_Click"

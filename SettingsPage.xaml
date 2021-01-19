@@ -9,10 +9,18 @@
       Title="SettingsPage">
 
     <Grid>
-        <TextBlock Text="Settings Page" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Margin="0,66,0,0"/>
-        <Button x:Name="ChangeThemeButton"
-                Content="CHANGE THEME"
-                Click="ChangeThemeButton_Click"
+        <TextBlock Text="Settings Page" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Foreground="White" Margin="0,66,0,0"/>
+
+        <Button x:Name="LightThemeButton"
+            Content="LIGHT THEME"
+            Click="LightThemeButton_Click"
+            Width="200"
+            Height="30"
+            Margin="300,149,300,271"
+            />
+        <Button x:Name="DarkThemeButton"
+                Content="DARK THEME"
+                Click="DarkThemeButton_Click"
                 Width="200"
                 Height="30"
                 Margin="300,195,300,225"

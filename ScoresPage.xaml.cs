@@ -17,14 +17,16 @@ namespace Snowman
     /// </summary>
     public partial class ScoresPage : Page
     {
-        public ScoresPage()
+        MainWindow mainWindow;
+        public ScoresPage(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MenuPage());
+            this.NavigationService.Navigate(new MenuPage(mainWindow));
         }
     }
 }

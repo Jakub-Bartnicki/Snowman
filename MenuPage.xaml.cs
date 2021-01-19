@@ -18,8 +18,11 @@ namespace Snowman
     /// </summary>
     public partial class MenuPage : Page
     {
-        public MenuPage()
+        MainWindow mainWindow;
+
+        public MenuPage(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
@@ -30,12 +33,12 @@ namespace Snowman
 
         private void ScoresButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ScoresPage());
+            this.NavigationService.Navigate(new ScoresPage(mainWindow));
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new SettingsPage());
+            this.NavigationService.Navigate(new SettingsPage(mainWindow));
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

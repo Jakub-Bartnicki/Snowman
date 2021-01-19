@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:Snowman"
         mc:Ignorable="d"
         Title="Snowman" Height="650" Width="1200">
-    <Window.Background>
-        <ImageBrush ImageSource="Images/day.jpg"/>
-    </Window.Background>
 
     <Frame x:Name="Main" NavigationUIVisibility="Hidden" Loaded="Main_Loaded"/>
 
