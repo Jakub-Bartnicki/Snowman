@@ -18,22 +18,42 @@ namespace Snowman.Pages
     /// </summary>
     public partial class LevelPage : Page
     {
-        public LevelPage()
+        MainWindow mainWindow;
+        public LevelPage(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
         private void EasyLevel_Click(object sender, RoutedEventArgs e)
         {
-
+            MediumLevelButton.IsChecked = false;
+            HardLevelButton.IsChecked = false;
         }
 
         private void MediumLevel_Click(object sender, RoutedEventArgs e)
         {
-
+            EasyLevelButton.IsChecked = false;
+            HardLevelButton.IsChecked = false;
         }
 
         private void HardLevel_Click(object sender, RoutedEventArgs e)
+        {
+            MediumLevelButton.IsChecked = false;
+            EasyLevelButton.IsChecked = false;
+        }
+
+        private void StartGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MenuPage(mainWindow));
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
 
         }

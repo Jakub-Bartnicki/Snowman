@@ -28,7 +28,7 @@ namespace Snowman.Pages
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new LevelPage());
+            this.NavigationService.Navigate(new LevelPage(mainWindow));
         }
 
         private void ScoresButton_Click(object sender, RoutedEventArgs e)

@@ -9,40 +9,47 @@
       Title="LevelPage">
 
     <Grid>
-        <TextBlock Text="Set game level" HorizontalAlignment="Center" Foreground="White" FontSize="20" Margin="0,40,0,-40"/>
-        <Button x:Name="EasyLevel"
+        <TextBlock Text="Set game level" HorizontalAlignment="Center" Height="30" Foreground="White" FontSize="20" Margin="0,31,0,389"/>
+        <ToggleButton x:Name="EasyLevelButton"
                 Content="EASY"
                 Click="EasyLevel_Click"
-                Width="200"
                 Height="30"
-                Margin="300,78,300,342"
+                Width="120"
+                Margin="336,78,336,342"
                />
 
-        <Button x:Name="MediumLevel"
+        <ToggleButton x:Name="MediumLevelButton"
                 Content="MEDIUM"
                 Click="MediumLevel_Click"
-                Width="200"
                 Height="30"
-                Margin="300,132,300,288"
+                Width="120"
+                Margin="336,132,336,288"
                />
 
-        <Button x:Name="HardLevel"
+        <ToggleButton x:Name="HardLevelButton"
                 Content="HARD"
                 Click="HardLevel_Click"
-                Width="200"
                 Height="30"
-                Margin="300,188,300,232"
+                Width="120"
+                Margin="336,188,336,232"
                />
         <Viewbox Width="200" Height="30" Margin="300,242,300,178">
-            <CheckBox Content="Snowman boost and block" Foreground="White"/>
+            <CheckBox Content="Snowman boost and block" Click="CheckBox_Click" Foreground="White"/>
         </Viewbox>
 
-        <Button x:Name="StartGame"
+        <Button x:Name="StartGameButton"
                 Content="START GAME"
-                Click="EasyLevel_Click"
+                Click="StartGameButton_Click"
                 Width="200"
                 Height="30"
-                Margin="300,328,300,92"
+                Margin="300,292,300,128"
+               />
+        <Button x:Name="BackButton"
+                Content="BACK"
+                Click="BackButton_Click"
+                Width="200"
+                Height="30"
+                Margin="300,377,300,43"
                />
     </Grid>
 </Page>
