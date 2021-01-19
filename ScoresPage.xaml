@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snowman"
         mc:Ignorable="d"
-        Title="ScoresPage" Height="450" Width="800"
-        Background="WhiteSmoke">
+        Title="ScoresPage" Height="450" Width="800">
     
     <Grid>
         <TextBlock Text="Scores Page" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+        <Button x:Name="BackButton"
+                Content="BACK"
+                Click="BackButton_Click"
+                Width="200"
+                Height="30"
+                Margin="300,280,300,140"
+               />
     </Grid>
 </Page>

@@ -30,12 +30,12 @@ namespace Snowman
 
         private void ScoresButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("SCORES");
+            this.NavigationService.Navigate(new ScoresPage());
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("SETTINGS");
+            this.NavigationService.Navigate(new SettingsPage());
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

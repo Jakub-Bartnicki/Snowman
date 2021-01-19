@@ -8,6 +8,6 @@
         Title="Snowman" Height="650" Width="1200"
         Background="WhiteSmoke">
 
-    <Frame x:Name="Main"/>
+    <Frame x:Name="Main" NavigationUIVisibility="Hidden" Loaded="Main_Loaded"/>
 
 </Window>

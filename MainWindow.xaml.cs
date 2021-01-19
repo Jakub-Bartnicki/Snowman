@@ -25,9 +25,14 @@ namespace Snowman
             InitializeComponent();
         }
 
-        private void MyWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Main_Loaded(object sender, RoutedEventArgs e)
         {
             Main.NavigationService.Navigate(new MenuPage());
         }
+
+        /*private void Snow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Main.NavigationService.Navigate(new MenuPage());
+        }*/
     }
 }
