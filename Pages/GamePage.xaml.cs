@@ -22,5 +22,7 @@ namespace Snowman.Pages
         {
             InitializeComponent();
         }
+
+
     }
 }

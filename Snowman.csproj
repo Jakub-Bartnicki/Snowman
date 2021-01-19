@@ -9,15 +9,13 @@
 	<ItemGroup>
 	  <None Remove="Images\day.jpg" />
 	  <None Remove="Images\night.jpg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Snowman\" />
+	  <None Remove="Images\snowman.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Resource Include="Images\day.jpg" />
 	  <Resource Include="Images\night.jpg" />
+	  <Resource Include="Images\snowman.png" />
 	</ItemGroup>
 
 </Project>

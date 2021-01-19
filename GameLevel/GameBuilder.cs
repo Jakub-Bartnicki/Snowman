@@ -22,7 +22,6 @@ namespace Snowman.GameLevel
         public void setDifficultyEasy()
         {
             this.gameLvl.Difficulty = 0;
-            Console.WriteLine("ez");
         }
 
         public void setDifficultyHard()
@@ -43,7 +42,6 @@ namespace Snowman.GameLevel
         public void setGamemodeOn()
         {
             this.gameLvl.Gamemode = true;
-            Console.WriteLine("hehe");
         }
 
         public GameLvl GetGameLvl()
