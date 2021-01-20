@@ -14,7 +14,7 @@ namespace Snowman
 {
     class Game
     {
-        private List<RainDrop> rainDropList = new List<RainDrop>();
+        protected List<RainDrop> rainDropList = new List<RainDrop>();
         private static IGameBuilder gameBuilder = new GameBuilder();
         public static SnowMan Snowman = new SnowMan(new NormalState());
 
@@ -33,5 +33,10 @@ namespace Snowman
         }
 
         public virtual void FactoryMethod() { }
+
+        public virtual RainDrop DrawRainDrop()
+        {
+            return null;
+        }
     }
 }
