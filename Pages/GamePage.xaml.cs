@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Snowman.Pages
 {
@@ -18,11 +19,47 @@ namespace Snowman.Pages
     /// </summary>
     public partial class GamePage : Page
     {
+        public static DispatcherTimer gameTimer = new DispatcherTimer();
+        public bool goLeft, goRight;
+        
         public GamePage()
         {
             InitializeComponent();
+
+            gameScreen.Focus();
+
+            Application.Current.MainWindow.KeyDown += new KeyEventHandler(KeyIsDown);
+            Application.Current.MainWindow.KeyUp += new KeyEventHandler(KeyIsUp);
+            gameTimer.Tick += GameTimerEvent;
+            gameTimer.Interval = TimeSpan.FromMilliseconds(16);
+            gameTimer.Start();
         }
 
+        private void GameTimerEvent(object sender, EventArgs e)
+        {
+            
+            if (goLeft == true && Canvas.GetLeft(snowman) > 0)
+            {
+                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - 5);
+            }
+            if (goRight == true && Canvas.GetLeft(snowman) + (snowman.Width * 2) < Application.Current.MainWindow.Width)
+            {
+                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + 5);
+            }
+        }
 
+        public void KeyIsDown(object sender, KeyEventArgs e)
+        {
+            // Game.Snowman.startMove(sender, e);
+            if (e.Key == Key.Left) goLeft = true;
+            if (e.Key == Key.Right) goRight = true;
+        }
+
+        public void KeyIsUp(object sender, KeyEventArgs e)
+        {
+            // Game.Snowman.endMove(sender, e);
+            if (e.Key == Key.Left) goLeft = false;
+            if (e.Key == Key.Right) goRight = false;
+        }
     }
 }

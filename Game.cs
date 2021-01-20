@@ -1,9 +1,14 @@
 ﻿using Snowman.GameLevel;
 using Snowman.Interfaces;
 using Snowman.RainDropFactory;
+using Snowman.Snowman;
+using Snowman.States;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+using System.Windows.Threading;
+
 
 namespace Snowman
 {
@@ -11,6 +16,7 @@ namespace Snowman
     {
         private List<RainDrop> rainDropList = new List<RainDrop>();
         private static IGameBuilder gameBuilder = new GameBuilder();
+        public static SnowMan Snowman = new SnowMan(new NormalState());
 
         public Game()
         {

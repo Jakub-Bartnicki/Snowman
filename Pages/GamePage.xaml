@@ -8,7 +8,7 @@
       Height="650" Width="1200"
       Title="GamePage">
 
-    <Canvas Name="GameScreen" Focusable="True">
-        <Image Name="Snowman" Height="80px" Width="70px" Source="../Images/snowman.png" Canvas.Left="565" Canvas.Top="500" />
+    <Canvas Name="gameScreen" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
+        <Image Name="snowman" Height="80px" Width="70px" Source="../Images/snowman.png" Canvas.Left="565" Canvas.Top="500" />
     </Canvas>
 </Page>
