@@ -12,11 +12,12 @@ using System.Windows.Threading;
 
 namespace Snowman
 {
-    class Game
+    public abstract class Game
     {
         protected List<RainDrop> rainDropList = new List<RainDrop>();
-        private static IGameBuilder gameBuilder = new GameBuilder();
         public static SnowMan Snowman = new SnowMan(new NormalState());
+        public int Difficulty { get; set; }
+        public bool Buffs { get; set; }
 
         public Game()
         {
@@ -26,10 +27,6 @@ namespace Snowman
         public List<RainDrop> RainDropList
         {
             get { return rainDropList; }
-        }
-        public static IGameBuilder GameBuilder
-        {
-            get{ return gameBuilder; }
         }
 
         public virtual void FactoryMethod() { }

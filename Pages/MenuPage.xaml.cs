@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Snowman.GameBuilding;
+using Snowman.GameLevel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -28,6 +30,7 @@ namespace Snowman.Pages
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
+            App.GameBuilder = new NormalGameBuilder();
             this.NavigationService.Navigate(new LevelPage(mainWindow));
         }
 

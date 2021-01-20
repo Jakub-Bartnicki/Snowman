@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Snowman.GameLevel;
+using Snowman.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,6 +15,18 @@ namespace Snowman
     /// </summary>
     public partial class App : Application
     {
-        Game game = new Game();
+        private static IGameBuilder gameBuilder;
+        public static Game game;
+
+        public static IGameBuilder GameBuilder
+        {
+            get { return gameBuilder; }
+            set { gameBuilder = value; }
+        }
+
+        public static void newGame()
+        {
+            game = gameBuilder.GetGame();
+        }
     }
 }

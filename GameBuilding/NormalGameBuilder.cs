@@ -1,52 +1,53 @@
-﻿using Snowman.Interfaces;
+﻿using Snowman.GameBuilding;
+using Snowman.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Snowman.GameLevel
 {
-    public class GameBuilder : IGameBuilder
+    public class NormalGameBuilder : IGameBuilder
     {
-        private GameLvl gameLvl = new GameLvl();
+        private NormalGame normalGame = new NormalGame();
 
-        public GameBuilder()
+        public NormalGameBuilder()
         {
             this.reset();
         }
 
         public void reset()
         {
-            this.gameLvl = new GameLvl();
+            this.normalGame = new NormalGame();
         }
 
         public void setDifficultyEasy()
         {
-            this.gameLvl.Difficulty = 0;
+            this.normalGame.Difficulty = 0;
         }
 
         public void setDifficultyHard()
         {
-            this.gameLvl.Difficulty = 2;
+            this.normalGame.Difficulty = 2;
         }
 
         public void setDifficultyNormal()
         {
-            this.gameLvl.Difficulty = 1;
+            this.normalGame.Difficulty = 1;
         }
 
         public void setGamemodeOff()
         {
-            this.gameLvl.Gamemode = false;
+            this.normalGame.Buffs = false;
         }
 
         public void setGamemodeOn()
         {
-            this.gameLvl.Gamemode = true;
+            this.normalGame.Buffs = true;
         }
 
-        public GameLvl GetGameLvl()
+        public Game GetGame()
         {
-            GameLvl result = this.gameLvl;
+            NormalGame result = this.normalGame;
 
             this.reset();
 

@@ -56,13 +56,13 @@ namespace Snowman.Pages
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
             if (EasyLevelButton.IsChecked == true) {
-                Game.GameBuilder.setDifficultyEasy();
+                App.GameBuilder.setDifficultyEasy();
 
             } else if(MediumLevelButton.IsChecked == true){
-                Game.GameBuilder.setDifficultyNormal();
+                App.GameBuilder.setDifficultyNormal();
 
             } else if(HardLevelButton.IsChecked == true){
-                Game.GameBuilder.setDifficultyHard();
+                App.GameBuilder.setDifficultyHard();
 
             } else {
                 MessageBox.Show("You have to choose game level");
@@ -70,11 +70,13 @@ namespace Snowman.Pages
             }
             if(SnowmanCheckBox.IsChecked == true)
             {
-                Game.GameBuilder.setGamemodeOn();
+                App.GameBuilder.setGamemodeOn();
             } else
             {
-                Game.GameBuilder.setGamemodeOff();
+                App.GameBuilder.setGamemodeOff();
             }
+            App.newGame();
+            MessageBox.Show("info: " + App.game.GetType());
             this.NavigationService.Navigate(new GamePage());
         }
     }

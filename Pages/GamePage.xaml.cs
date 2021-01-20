@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using System.IO;
+
 namespace Snowman.Pages
 {
     /// <summary>
@@ -19,8 +21,8 @@ namespace Snowman.Pages
     /// </summary>
     public partial class GamePage : Page
     {
-        public static DispatcherTimer gameTimer = new DispatcherTimer();
-        public bool goLeft, goRight;
+        private DispatcherTimer gameTimer = new DispatcherTimer();
+        private bool goLeft, goRight;
         
         public GamePage()
         {
@@ -31,7 +33,7 @@ namespace Snowman.Pages
             Application.Current.MainWindow.KeyDown += new KeyEventHandler(KeyIsDown);
             Application.Current.MainWindow.KeyUp += new KeyEventHandler(KeyIsUp);
             gameTimer.Tick += GameTimerEvent;
-            gameTimer.Interval = TimeSpan.FromMilliseconds(16);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(6);
             gameTimer.Start();
         }
 

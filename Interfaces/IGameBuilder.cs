@@ -16,5 +16,7 @@ namespace Snowman.Interfaces
         void setDifficultyNormal();
 
         void setDifficultyHard();
+
+        Game GetGame();
     }
 }
