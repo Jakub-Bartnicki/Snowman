@@ -13,7 +13,7 @@ namespace Snowman.RainDropFactory
             RainDropList.Add(new Snowball());
             RainDropList.Add(new Icicle());
             RainDropList.Add(new Star());
-            RainDropList.Add(new Meteor());
+            RainDropList.Add(new Meteorite());
         }
     }
 }

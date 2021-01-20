@@ -6,7 +6,7 @@ namespace Snowman.RainDropFactory
 {
     abstract class RainDrop : Interfaces.IRainDrop
     {
-        abstract public int ChangePoints();
-        abstract public int ChangeHealth();
+        public int Health { get; set; }
+        public int Points { get; set; }
     }
 }

@@ -6,17 +6,10 @@ namespace Snowman.RainDropFactory
 {
     class Icicle : RainDrop
     {
-        int health = -15;
-        int points = 0;
-
-        public override int ChangeHealth()
+        public Icicle()
         {
-            return health;
-        }
-
-        public override int ChangePoints()
-        {
-            return points;
+            this.Health = -15;
+            this.Points = 0;
         }
     }
 }

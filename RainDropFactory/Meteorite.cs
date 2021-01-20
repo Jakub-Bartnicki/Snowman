@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Snowman.RainDropFactory
 {
-    class Star : RainDrop
+    class Meteorite : RainDrop
     {
-        String effect = "buffed";
+        String effect = "blocked";
 
-        public Star()
+        public Meteorite()
         {
-            this.Health = 0;
-            this.Points = 30;
+            this.Health = -30;
+            this.Points = -10;
         }
 
         public String AddEffect()

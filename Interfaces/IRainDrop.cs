@@ -6,7 +6,7 @@ namespace Snowman.Interfaces
 {
     interface IRainDrop
     {
-        int ChangePoints();
-        int ChangeHealth();
+        public int Health { get; set; }
+        public int Points { get; set; }
     }
 }

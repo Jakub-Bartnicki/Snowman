@@ -6,17 +6,10 @@ namespace Snowman.RainDropFactory
 {
     class Snowflake : RainDrop
     {
-        int health = 2;
-        int points = 2;
-
-        public override int ChangeHealth()
+        public Snowflake()
         {
-            return health;
-        }
-
-        public override int ChangePoints()
-        {
-            return points;
+            this.Health = 2;
+            this.Points = 2;
         }
     }
 }
