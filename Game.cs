@@ -15,7 +15,7 @@ namespace Snowman
     class Game
     {
         protected List<RainDrop> rainDropList = new List<RainDrop>();
-        private static IGameBuilder gameBuilder = new GameBuilder();
+        protected static IGameBuilder gameBuilder = new GameBuilder();
         public static SnowMan Snowman = new SnowMan(new NormalState());
 
         public Game()

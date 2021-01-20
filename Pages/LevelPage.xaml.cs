@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snowman.RainDropFactory;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -55,26 +56,38 @@ namespace Snowman.Pages
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EasyLevelButton.IsChecked == true) {
-                Game.GameBuilder.setDifficultyEasy();
+            if (EasyLevelButton.IsChecked == true || MediumLevelButton.IsChecked == true || HardLevelButton.IsChecked == true)
+            {
+                if (SnowmanCheckBox.IsChecked == true)
+                {
+                    Game.GameBuilder.setGamemodeOn();
+                }
+                else
+                {
+                    Game.GameBuilder.setGamemodeOff();
+                }
 
-            } else if(MediumLevelButton.IsChecked == true){
-                Game.GameBuilder.setDifficultyNormal();
+                if (EasyLevelButton.IsChecked == true)
+                {
+                    Game.GameBuilder.setDifficultyEasy();
 
-            } else if(HardLevelButton.IsChecked == true){
-                Game.GameBuilder.setDifficultyHard();
+                }
+                else if (MediumLevelButton.IsChecked == true)
+                {
+                    Game.GameBuilder.setDifficultyNormal();
 
-            } else {
+                }
+                else if (HardLevelButton.IsChecked == true)
+                {
+                    Game.GameBuilder.setDifficultyHard();
+                }
+            }
+            else
+            {
                 MessageBox.Show("You have to choose game level");
                 return;
             }
-            if(SnowmanCheckBox.IsChecked == true)
-            {
-                Game.GameBuilder.setGamemodeOn();
-            } else
-            {
-                Game.GameBuilder.setGamemodeOff();
-            }
+
             this.NavigationService.Navigate(new GamePage());
         }
     }

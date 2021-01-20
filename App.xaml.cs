@@ -13,6 +13,5 @@ namespace Snowman
     /// </summary>
     public partial class App : Application
     {
-        Game game = new Game();
     }
 }
