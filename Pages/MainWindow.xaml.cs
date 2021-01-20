@@ -27,7 +27,7 @@ namespace Snowman.Pages
 
         private void Main_Loaded(object sender, RoutedEventArgs e)
         {
-            setLightTheme();
+            setDarkTheme();
             Main.NavigationService.Navigate(new MenuPage(this));
         }
 

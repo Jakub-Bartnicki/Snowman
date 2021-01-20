@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Snowman.RainDropFactory
 {
-    class Star : RainDrop
+    class Snowball : RainDrop
     {
-        int health = 0;
-        int points = 30;
+        int health = 10;
+        int points = 10;
 
         public override int ChangeHealth()
         {
@@ -17,11 +17,6 @@ namespace Snowman.RainDropFactory
         public override int ChangePoints()
         {
             return points;
-        }
-
-        public String AddEffect()
-        {
-            return "buffed";
         }
     }
 }

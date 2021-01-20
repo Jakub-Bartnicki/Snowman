@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Snowman.RainDropFactory
 {
-    class RainDrop
+    abstract class RainDrop : Interfaces.IRainDrop
     {
+        abstract public int ChangePoints();
+        abstract public int ChangeHealth();
     }
 }
