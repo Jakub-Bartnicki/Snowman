@@ -29,6 +29,8 @@ namespace Snowman.Pages
 
         Random rand = new Random();
 
+        String gametype;
+
         int rainDropSpriteCounter = 0;
         int rainDropCounter = 0;
         int playerSpeed = 10;
@@ -49,6 +51,9 @@ namespace Snowman.Pages
             Application.Current.MainWindow.KeyUp += new KeyEventHandler(KeyIsUp);
 
             gameTimer.Interval = TimeSpan.FromMilliseconds(6);
+            
+            gametype = App.game.GetType().ToString();
+
             gameTimer.Tick += GameLoop;
             gameTimer.Start();
 
@@ -72,7 +77,7 @@ namespace Snowman.Pages
             showPoints.Content = "Points: " + points;
             showHealth.Content = "Health: " + health;
 
-            if (rainDropCounter < 0)
+            if (rainDropCounter < 30)
             {
                 MakeRainDrop();
                 rainDropCounter = limit;
@@ -97,13 +102,15 @@ namespace Snowman.Pages
                     {
                         itemRemover.Add(x);
                     }
-
-                    Rect rainDropHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-
-                    if (playerHitBox.IntersectsWith(rainDropHitBox))
+                    else
                     {
-                        itemRemover.Add(x);
-                        //Change health
+                        Rect rainDropHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                        if (playerHitBox.IntersectsWith(rainDropHitBox))
+                        {
+                            itemRemover.Add(x);
+                            //Change health
+                        }
                     }
                 }
             }
@@ -133,7 +140,14 @@ namespace Snowman.Pages
         {
             ImageBrush rainDropSprite = new ImageBrush();
 
-            rainDropSpriteCounter = rand.Next(1, 4);
+            if (gametype.Equals("Snowman.GameBuilding.NormalGame"))
+            {
+                rainDropSpriteCounter = rand.Next(1, 4);
+            }
+            else
+            {
+                rainDropSpriteCounter = rand.Next(4, 7);
+            }
 
             switch (rainDropSpriteCounter)
             {
@@ -144,6 +158,15 @@ namespace Snowman.Pages
                     rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/icicle.png"));
                     break;
                 case 3:
+                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/star.png"));
+                    break;
+                case 4:
+                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowball.png"));
+                    break;
+                case 5:
+                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/meteorite.png"));
+                    break;
+                case 6:
                     rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/star.png"));
                     break;
             }
