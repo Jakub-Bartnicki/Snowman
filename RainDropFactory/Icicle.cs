@@ -11,7 +11,6 @@ namespace Snowman.RainDropFactory
     {
         public Icicle(BitmapImage image) : base(image)
         {
-            ImageSrc = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/icicle.png"));
             this.Health = -15;
             this.Points = 0;
         }

@@ -8,12 +8,14 @@ namespace Snowman.RainDropViews
 {
     public class RainDropViewFactory
     {
-        private static HashSet<RainDropView> rainDropViews;
+        private static HashSet<RainDropView> rainDropViews = new HashSet<RainDropView>();
 
         public static RainDropView getRainDropView(RainDrop rainDrop, BitmapImage image)
         {  
-            RainDropView rainDropView = new RainDropView(rainDrop, image);
+            RainDropView rainDropView = new RainDropView(rainDrop.GetType(), image);
+
             rainDropViews.Add(rainDropView);
+
             return rainDropView;
         }
     }

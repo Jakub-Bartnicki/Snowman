@@ -11,7 +11,6 @@ namespace Snowman.RainDropFactory
 
         public Meteorite(BitmapImage image) : base(image)
         {
-            ImageSrc = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/meteorite.png"));
             this.Health = -30;
             this.Points = -10;
         }

@@ -9,7 +9,6 @@ namespace Snowman.RainDropFactory
     {
         public Snowball(BitmapImage image) : base(image)
         {
-            ImageSrc = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowball.png"));
             this.Health = 10;
             this.Points = 10;
         }

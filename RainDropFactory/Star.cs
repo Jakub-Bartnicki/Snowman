@@ -11,7 +11,6 @@ namespace Snowman.RainDropFactory
 
         public Star(BitmapImage image) : base(image)
         {
-            ImageSrc = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/star.png"));
             this.Health = 0;
             this.Points = 30;
         }

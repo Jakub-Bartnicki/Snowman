@@ -8,16 +8,17 @@ namespace Snowman.RainDropViews
 {
     public class RainDropView
     {
-        private RainDrop rainDrop;
+        private Type rainDropType;
         private BitmapImage image;
         public BitmapImage Image { 
             get { return image; } 
             set { image = value; } 
         }
+        public Type RainDropType { get; set; }
 
-        public RainDropView(RainDrop rainDrop, BitmapImage image)
+        public RainDropView(Type rainDropType, BitmapImage image)
         {
-            this.rainDrop = rainDrop;
+            this.rainDropType = rainDropType;
             this.image = image;
         }
     }

@@ -15,7 +15,7 @@ namespace Snowman.RainDropFactory
 
         public RainDrop(BitmapImage image)
         {
-            this.RainDropView = new RainDropView(this, image);
+            this.RainDropView = RainDropViewFactory.getRainDropView(this, image);
         }
     }
 }
