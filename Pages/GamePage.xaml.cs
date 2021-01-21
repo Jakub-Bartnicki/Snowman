@@ -75,7 +75,13 @@ namespace Snowman.Pages
             rainDropCounter -= 1;
 
             showPoints.Content = "Points: " + points;
-            showHealth.Content = "Health: " + health;
+            showHealth.Content = "Health: " + App.game.Snowman.Health;
+
+            if(App.game.Snowman.Health == 0)
+            {
+                EndGame();
+                return;
+            }
 
             if (rainDropCounter < 30)
             {
@@ -118,7 +124,9 @@ namespace Snowman.Pages
                     if (playerHitBox.IntersectsWith(rainDropHitBox))
                     {
                         itemRemover.Add(rect.Key);
-                        points += rect.Value.Health;
+                        points += rect.Value.Points;
+                        App.game.Snowman.Health += rect.Value.Health;
+                        //App.game.Snowman.
                         //Zmiana stanu bałwana
                         //ImageBrush playerImage = new ImageBrush();
                         //playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman_blocked.png"));
@@ -182,6 +190,21 @@ namespace Snowman.Pages
             gameScreen.Children.Add(newRainDrop);
 
             map.Add(newRainDrop, rainDrop);
+        }
+
+        private void EndGame()
+        {
+            endGameText.Content = "Your score: ";
+            endGamePoints.Content = points;
+            backButton.Content = "BACK";
+            backButton.Width = 200;
+            backButton.Height = 30;
+            backButton.Click += backButton_Click;
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MenuPage());
         }
     }
 }

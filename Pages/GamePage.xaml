@@ -9,8 +9,13 @@
       Title="GamePage">
 
     <Canvas Name="gameScreen" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
-        <Rectangle Name="snowman" Height="80px" Width="70px" Fill="yellow" Canvas.Left="565" Canvas.Top="500" />
-        <Label Name="showPoints" Canvas.Bottom="0" Canvas.Right="90" Content="Points: " Foreground="White" FontSize="30" FontWeight="Bold"/>
-        <Label Name="showHealth" Canvas.Bottom="0" Content="Health: " Foreground="White" FontSize="30" FontWeight="Bold"/>
+        <Rectangle Name="snowman" Height="80px" Width="70px" Fill="yellow" Canvas.Left="565" Canvas.Top="521" RenderTransformOrigin="0.535,0.4" />
+        <Label Name="showPoints" Canvas.Bottom="0" Canvas.Right="90" Content="Points: " Foreground="White" FontSize="30" FontWeight="Bold" Canvas.Left="976" Canvas.Top="0"/>
+        <Label Name="showHealth" Canvas.Bottom="0" Content="Health: " Foreground="White" FontSize="30" FontWeight="Bold" Canvas.Top="0"/>
+        <Grid x:Name="EndGameBlock" Width="400" Height="200" Canvas.Left="400" Canvas.Top="177">
+            <Label Name="endGameText" HorizontalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Bold"/>
+            <Label Name="endGamePoints" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Bottom="0" Foreground="White" FontSize="30" FontWeight="Bold" Canvas.Top="275" Canvas.Left="543"/>
+            <Button x:Name="backButton" VerticalAlignment="Bottom" Width="0" Height="0"/>
+        </Grid>
     </Canvas>
 </Page>

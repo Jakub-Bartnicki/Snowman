@@ -17,7 +17,7 @@ namespace Snowman
     public abstract class Game
     {
         private static List<RainDrop> rainDropList = new List<RainDrop>();
-        public static SnowMan Snowman = new SnowMan(new NormalState());
+        public SnowMan Snowman = new SnowMan(new NormalState());
         public Theme theme;
         public int Difficulty { get; set; }
         public bool Buffs { get; set; }

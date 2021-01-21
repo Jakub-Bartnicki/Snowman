@@ -20,7 +20,8 @@ namespace Snowman.Snowman
             get { return health; }
             set
             {
-                if (value <= 0) health = 0;
+                if (value < 0) health = 0;
+                else if (value > 100) health = 100;
                 else health = value;
             }
         }
