@@ -10,7 +10,7 @@ namespace Snowman.RainDropFactory
 {
     class Icicle : RainDrop
     {
-        public Icicle()
+        public Icicle(BitmapImage image) : base(image)
         {
             this.Health = -15;
             this.Points = 0;

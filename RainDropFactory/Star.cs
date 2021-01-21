@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace Snowman.RainDropFactory
 {
@@ -8,7 +9,7 @@ namespace Snowman.RainDropFactory
     {
         String effect = "buffed";
 
-        public Star()
+        public Star(BitmapImage image) : base(image)
         {
             this.Health = 0;
             this.Points = 30;

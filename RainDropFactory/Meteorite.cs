@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace Snowman.RainDropFactory
 {
@@ -8,7 +9,7 @@ namespace Snowman.RainDropFactory
     {
         String effect = "blocked";
 
-        public Meteorite()
+        public Meteorite(BitmapImage image) : base(image)
         {
             this.Health = -30;
             this.Points = -10;

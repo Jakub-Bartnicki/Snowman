@@ -23,7 +23,7 @@ namespace Snowman.Pages
     /// </summary>
     public partial class GamePage : Page
     {
-        private static SortedDictionary<Rectangle, RainDrop> map;
+        private static Dictionary<Rectangle, RainDrop> map;
         private DispatcherTimer gameTimer = new DispatcherTimer();
         private bool goLeft, goRight;
         List<Rectangle> itemRemover= new List<Rectangle>();
@@ -46,7 +46,7 @@ namespace Snowman.Pages
         {
             InitializeComponent();
 
-            map = new SortedDictionary<Rectangle, RainDrop>();
+            map = new Dictionary<Rectangle, RainDrop>();
 
             gameScreen.Focus();
 
@@ -172,7 +172,7 @@ namespace Snowman.Pages
             }
 
             ImageBrush rainDropSprite = new ImageBrush();
-            rainDropSprite.ImageSource = rainDrop.ImageSrc;
+            rainDropSprite.ImageSource = rainDrop.RainDropView.Image;
             
             Rectangle newRainDrop = new Rectangle
             {
