@@ -19,10 +19,8 @@ namespace Snowman.Pages
     /// </summary>
     public partial class LevelPage : Page
     {
-        MainWindow mainWindow;
-        public LevelPage(MainWindow mainWindow)
+        public LevelPage()
         {
-            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
@@ -51,7 +49,7 @@ namespace Snowman.Pages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MenuPage(mainWindow));
+            this.NavigationService.Navigate(new MenuPage());
         }
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)

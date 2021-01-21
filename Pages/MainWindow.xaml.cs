@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snowman.Themes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,19 +28,8 @@ namespace Snowman.Pages
 
         private void Main_Loaded(object sender, RoutedEventArgs e)
         {
-            setDarkTheme();
-            Main.NavigationService.Navigate(new MenuPage(this));
+            Theme.getInstance().displayBackground();
+            Main.NavigationService.Navigate(new MenuPage());
         }
-
-        public void setLightTheme()
-        {
-            this.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/day.jpg")));
-        }
-
-        public void setDarkTheme()
-        {
-            this.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/night.jpg")));
-        }
-
     }
 }

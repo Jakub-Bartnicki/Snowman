@@ -19,17 +19,14 @@ namespace Snowman.Pages
     /// </summary>
     public partial class SettingsPage : Page
     {
-        MainWindow mainWindow;
-
-        public SettingsPage(MainWindow mainWindow)
+        public SettingsPage()
         {
-            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MenuPage(mainWindow));
+            this.NavigationService.Navigate(new MenuPage());
         }
 
         private void LightThemeButton_Click(object sender, RoutedEventArgs e)
