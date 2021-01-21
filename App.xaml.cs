@@ -1,5 +1,6 @@
 ﻿using Snowman.GameLevel;
 using Snowman.Interfaces;
+using Snowman.Themes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,6 +18,12 @@ namespace Snowman
     {
         private static IGameBuilder gameBuilder;
         public static Game game;
+        public Theme theme;
+
+        public App() : base()
+        {
+            theme = Theme.getInstance();
+        }
 
         public static IGameBuilder GameBuilder
         {
