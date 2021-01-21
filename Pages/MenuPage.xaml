@@ -9,12 +9,20 @@
       Title="MenuPage">
 
     <Grid>
-        <Button x:Name="StartGameButton"
-                Content="START GAME"
-                Click="StartGameButton_Click"
+        <Button x:Name="NormalGameButton"
+                Content="NORMAL GAME"
+                Click="NormalGameButton_Click"
                 Width="200"
                 Height="30"
-                Margin="300,121,300,283"
+                Margin="300,154,300,266"
+               />
+
+        <Button x:Name="BuffedGameButton"
+                Content="BUFFED GAME"
+                Click="BuffedGameButton_Click"
+                Width="200"
+                Height="30"
+                Margin="300,195,300,225"
                />
 
         <Button x:Name="ScoresButton"
@@ -22,20 +30,20 @@
                 Content="SCORES" 
                 Width="200"
                 Height="30"
-                Margin="300,169,300,235"/>
+                Margin="300,262,300,158"/>
 
         <Button x:Name="SettingsButton"
                 Content="SETTINGS"
                 Click="SettingsButton_Click"
                 Width="200"
                 Height="30"
-                Margin="300,217,300,187"/>
+                Margin="300,303,300,117"/>
 
         <Button x:Name="ExitButton"
                 Content="EXIT"
                 Click="ExitButton_Click"
                 Width="200" 
                 Height="30"
-                Margin="300,316,300,88"/>
+                Margin="300,372,300,48"/>
     </Grid>
 </Page>

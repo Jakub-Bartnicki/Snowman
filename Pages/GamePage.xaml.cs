@@ -23,7 +23,7 @@ namespace Snowman.Pages
     /// </summary>
     public partial class GamePage : Page
     {
-        private static SortedDictionary<Rectangle, RainDrop> map;
+        private static Dictionary<Rectangle, RainDrop> map;
         private DispatcherTimer gameTimer = new DispatcherTimer();
         private bool goLeft, goRight;
         List<Rectangle> itemRemover= new List<Rectangle>();
@@ -31,6 +31,7 @@ namespace Snowman.Pages
         Random rand = new Random();
 
         String gametype;
+        int draw;
 
         int rainDropSpriteCounter = 0;
         int rainDropCounter = 0;
@@ -46,7 +47,7 @@ namespace Snowman.Pages
         {
             InitializeComponent();
 
-            map = new SortedDictionary<Rectangle, RainDrop>();
+            map = new Dictionary<Rectangle, RainDrop>();
 
             gameScreen.Focus();
 
@@ -78,7 +79,18 @@ namespace Snowman.Pages
 
             if (rainDropCounter < 30)
             {
-                MakeRainDrop("NeutralRainDrop");
+                draw = rand.Next(1, 101);
+                if (draw >=1 && draw < 40)
+                {
+                    MakeRainDrop("NeutralRainDrop");
+                }
+                else if (draw >= 40 && draw < 60)
+                {
+                    MakeRainDrop("PositiveRainDrop");
+                } else
+                {
+                    MakeRainDrop("OffensiveRainDrop");
+                }
                 rainDropCounter = limit;
             }
 
@@ -93,6 +105,8 @@ namespace Snowman.Pages
 
             foreach (var rect in map)
             {
+                Canvas.SetTop(rect.Key, Canvas.GetTop(rect.Key) + rainDropSpeed);
+
                 if (Canvas.GetTop(rect.Key) > 650)
                 {
                     itemRemover.Add(rect.Key);
@@ -108,29 +122,6 @@ namespace Snowman.Pages
                     }
                 }
             }
-
-            /*foreach (var x in gameScreen.Children.OfType<Rectangle>())
-            {
-                if (x is Rectangle && (string)x.Tag == "raindrop")
-                {
-                    Canvas.SetTop(x, Canvas.GetTop(x) + rainDropSpeed);
-
-                    if (Canvas.GetTop(x) > 650)
-                    {
-                        itemRemover.Add(x);
-                    }
-                    else
-                    {
-                        Rect rainDropHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-
-                        if (playerHitBox.IntersectsWith(rainDropHitBox))
-                        {
-                            itemRemover.Add(x);
-                            //Change health
-                        }
-                    }
-                }
-            }*/
 
             foreach (Rectangle i in itemRemover)
             {
