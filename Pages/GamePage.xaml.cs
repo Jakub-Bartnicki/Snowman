@@ -59,10 +59,6 @@ namespace Snowman.Pages
 
             gameScreen.Focus();
 
-            ImageBrush neutralRainDrop = new ImageBrush();
-            ImageBrush positiveRainDrop = new ImageBrush();
-            ImageBrush offensiveRainDrop = new ImageBrush();
-
             ImageBrush playerImage = new ImageBrush();
             playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman.png"));
             snowman.Fill = playerImage;
@@ -92,6 +88,11 @@ namespace Snowman.Pages
                 Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
             }
 
+            foreach (var rect in Game.Map)
+            {
+                if ()
+            }
+
             foreach (var x in gameScreen.Children.OfType<Rectangle>())
             {
                 if (x is Rectangle && (string)x.Tag == "raindrop")
@@ -118,6 +119,7 @@ namespace Snowman.Pages
             foreach (Rectangle i in itemRemover)
             {
                 gameScreen.Children.Remove(i);
+                Game.Map.Remove(i);
             }
 
         }
@@ -155,7 +157,7 @@ namespace Snowman.Pages
 
             ImageBrush rainDropSprite = new ImageBrush();
             rainDropSprite.ImageSource = rainDrop.ImageSrc;
-
+            
             Rectangle newRainDrop = new Rectangle
             {
                 Tag = "raindrop",
@@ -167,6 +169,8 @@ namespace Snowman.Pages
             Canvas.SetTop(newRainDrop, -100);
             Canvas.SetLeft(newRainDrop, rand.Next(300, 900));
             gameScreen.Children.Add(newRainDrop);
+
+            Game.Map.Add(newRainDrop, rainDrop);
         }
     }
 }

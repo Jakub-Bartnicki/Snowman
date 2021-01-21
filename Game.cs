@@ -7,7 +7,8 @@ using Snowman.Themes;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Windows.Media;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 
@@ -15,7 +16,8 @@ namespace Snowman
 {
     public abstract class Game
     {
-        private List<RainDrop> rainDropList = new List<RainDrop>();
+        private static List<RainDrop> rainDropList = new List<RainDrop>();
+        private static SortedDictionary<Rectangle, RainDrop> map;
         public static SnowMan Snowman = new SnowMan(new NormalState());
         public Theme theme;
         public int Difficulty { get; set; }
@@ -23,11 +25,17 @@ namespace Snowman
 
         public Game()
         {
+            RainDropList.Clear();
         }
 
-        public List<RainDrop> RainDropList
+        public static List<RainDrop> RainDropList
         {
             get { return rainDropList; }
+        }
+
+        public static SortedDictionary<Rectangle, RainDrop> Map
+        {
+            get { return map; }
         }
 
         public abstract RainDrop CreateNeutralRainDrop();
