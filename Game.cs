@@ -17,7 +17,6 @@ namespace Snowman
     public abstract class Game
     {
         private static List<RainDrop> rainDropList = new List<RainDrop>();
-        private static SortedDictionary<Rectangle, RainDrop> map;
         public static SnowMan Snowman = new SnowMan(new NormalState());
         public Theme theme;
         public int Difficulty { get; set; }
@@ -31,11 +30,6 @@ namespace Snowman
         public static List<RainDrop> RainDropList
         {
             get { return rainDropList; }
-        }
-
-        public static SortedDictionary<Rectangle, RainDrop> Map
-        {
-            get { return map; }
         }
 
         public abstract RainDrop CreateNeutralRainDrop();

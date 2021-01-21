@@ -23,6 +23,7 @@ namespace Snowman.Pages
     /// </summary>
     public partial class GamePage : Page
     {
+        private static SortedDictionary<Rectangle, RainDrop> map;
         private DispatcherTimer gameTimer = new DispatcherTimer();
         private bool goLeft, goRight;
         List<Rectangle> itemRemover= new List<Rectangle>();
@@ -44,6 +45,8 @@ namespace Snowman.Pages
         public GamePage()
         {
             InitializeComponent();
+
+            map = new SortedDictionary<Rectangle, RainDrop>();
 
             gameScreen.Focus();
 
@@ -88,12 +91,25 @@ namespace Snowman.Pages
                 Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
             }
 
-            foreach (var rect in Game.Map)
+            foreach (var rect in map)
             {
-                if ()
+                if (Canvas.GetTop(rect.Key) > 650)
+                {
+                    itemRemover.Add(rect.Key);
+                }
+                else
+                {
+                    Rect rainDropHitBox = new Rect(Canvas.GetLeft(rect.Key), Canvas.GetTop(rect.Key), rect.Key.Width, rect.Key.Height);
+
+                    if (playerHitBox.IntersectsWith(rainDropHitBox))
+                    {
+                        itemRemover.Add(rect.Key);
+                        points += rect.Value.Health;
+                    }
+                }
             }
 
-            foreach (var x in gameScreen.Children.OfType<Rectangle>())
+            /*foreach (var x in gameScreen.Children.OfType<Rectangle>())
             {
                 if (x is Rectangle && (string)x.Tag == "raindrop")
                 {
@@ -114,12 +130,12 @@ namespace Snowman.Pages
                         }
                     }
                 }
-            }
+            }*/
 
             foreach (Rectangle i in itemRemover)
             {
                 gameScreen.Children.Remove(i);
-                Game.Map.Remove(i);
+                map.Remove(i);
             }
 
         }
@@ -170,7 +186,7 @@ namespace Snowman.Pages
             Canvas.SetLeft(newRainDrop, rand.Next(300, 900));
             gameScreen.Children.Add(newRainDrop);
 
-            Game.Map.Add(newRainDrop, rainDrop);
+            map.Add(newRainDrop, rainDrop);
         }
     }
 }
