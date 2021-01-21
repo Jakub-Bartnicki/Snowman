@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snowman.Themes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -33,12 +34,12 @@ namespace Snowman.Pages
 
         private void LightThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.setLightTheme();
+            Theme.getInstance().setLightTheme();
         }
 
         private void DarkThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.setDarkTheme();
+            Theme.getInstance().setDarkTheme();
         }
     }
 }

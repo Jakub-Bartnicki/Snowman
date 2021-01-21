@@ -3,6 +3,7 @@ using Snowman.Interfaces;
 using Snowman.RainDropFactory;
 using Snowman.Snowman;
 using Snowman.States;
+using Snowman.Themes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Snowman
     {
         protected List<RainDrop> rainDropList = new List<RainDrop>();
         public static SnowMan Snowman = new SnowMan(new NormalState());
+        public Theme theme;
         public int Difficulty { get; set; }
         public bool Buffs { get; set; }
 
