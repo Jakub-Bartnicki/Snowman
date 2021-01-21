@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace Snowman.RainDropFactory
 {
@@ -8,5 +9,7 @@ namespace Snowman.RainDropFactory
     {
         public int Health { get; set; }
         public int Points { get; set; }
+
+        public BitmapImage ImageSrc { get; set; }
     }
 }

@@ -79,7 +79,7 @@ namespace Snowman.Pages
 
             if (rainDropCounter < 30)
             {
-                MakeRainDrop();
+                MakeRainDrop("NeutralRainDrop");
                 rainDropCounter = limit;
             }
 
@@ -136,40 +136,25 @@ namespace Snowman.Pages
             if (e.Key == Key.Right) goRight = false;
         }
 
-        private void MakeRainDrop()
+        private void MakeRainDrop(string rainDropType)
         {
+            RainDrop rainDrop;
+            if (rainDropType == "NeutralRainDrop")
+            {
+                rainDrop = App.game.CreateNeutralRainDrop();
+            } else if (rainDropType.Equals("OffensiveRainDrop"))
+            {
+                rainDrop = App.game.CreateOffensiveRainDrop();
+            } else if (rainDropType.Equals("PositiveRainDrop"))
+            {
+                rainDrop = App.game.CreatePositiveRainDrop();
+            } else
+            {
+                return;
+            }
+
             ImageBrush rainDropSprite = new ImageBrush();
-
-            if (gametype.Equals("Snowman.GameBuilding.NormalGame"))
-            {
-                rainDropSpriteCounter = rand.Next(1, 4);
-            }
-            else
-            {
-                rainDropSpriteCounter = rand.Next(4, 7);
-            }
-
-            switch (rainDropSpriteCounter)
-            {
-                case 1:
-                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowflake.png"));
-                    break;
-                case 2:
-                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/icicle.png"));
-                    break;
-                case 3:
-                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/star.png"));
-                    break;
-                case 4:
-                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowball.png"));
-                    break;
-                case 5:
-                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/meteorite.png"));
-                    break;
-                case 6:
-                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/star.png"));
-                    break;
-            }
+            rainDropSprite.ImageSource = rainDrop.ImageSrc;
 
             Rectangle newRainDrop = new Rectangle
             {
