@@ -10,21 +10,21 @@ namespace Snowman.GameBuilding
         public override RainDrop CreateNeutralRainDrop()
         {
             Snowball snowball = new Snowball();
-            rainDropList.Add(snowball);
+            App.game.RainDropList.Add(snowball);
             return snowball;
         }
 
         public override RainDrop CreateOffensiveRainDrop()
         {
             Meteorite meteorite = new Meteorite();
-            rainDropList.Add(meteorite);
+            App.game.RainDropList.Add(meteorite);
             return meteorite;
         }
 
         public override RainDrop CreatePositiveRainDrop()
         {
             Star star = new Star();
-            rainDropList.Add(star);
+            App.game.RainDropList.Add(star);
             return star;
         }
     }

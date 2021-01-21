@@ -15,7 +15,7 @@ namespace Snowman
 {
     public abstract class Game
     {
-        protected List<RainDrop> rainDropList = new List<RainDrop>();
+        private List<RainDrop> rainDropList = new List<RainDrop>();
         public static SnowMan Snowman = new SnowMan(new NormalState());
         public Theme theme;
         public int Difficulty { get; set; }
