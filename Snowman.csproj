@@ -14,6 +14,8 @@
 	  <None Remove="Images\snowball.png" />
 	  <None Remove="Images\snowflake.png" />
 	  <None Remove="Images\snowman.png" />
+	  <None Remove="Images\snowman_blocked.png" />
+	  <None Remove="Images\snowman_buffed.png" />
 	  <None Remove="Images\star.png" />
 	</ItemGroup>
 
@@ -25,6 +27,8 @@
 	  <Resource Include="Images\snowball.png" />
 	  <Resource Include="Images\snowflake.png" />
 	  <Resource Include="Images\snowman.png" />
+	  <Resource Include="Images\snowman_buffed.png" />
+	  <Resource Include="Images\snowman_blocked.png" />
 	  <Resource Include="Images\star.png" />
 	</ItemGroup>
 
