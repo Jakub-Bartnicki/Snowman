@@ -119,6 +119,10 @@ namespace Snowman.Pages
                     {
                         itemRemover.Add(rect.Key);
                         points += rect.Value.Health;
+                        //Zmiana stanu bałwana
+                        //ImageBrush playerImage = new ImageBrush();
+                        //playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman_blocked.png"));
+                        //snowman.Fill = playerImage;
                     }
                 }
             }
