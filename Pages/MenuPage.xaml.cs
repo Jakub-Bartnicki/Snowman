@@ -20,39 +20,36 @@ namespace Snowman.Pages
     /// </summary>
     public partial class MenuPage : Page
     {
-        MainWindow mainWindow;
-
-        public MenuPage(MainWindow mainWindow)
+        public MenuPage()
         {
-            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
         private void BuffedGameButton_Click(object sender, RoutedEventArgs e)
         {
             App.GameBuilder = new BuffedGameBuilder();
-            this.NavigationService.Navigate(new LevelPage(mainWindow));
+            this.NavigationService.Navigate(new LevelPage());
         }
 
         private void NormalGameButton_Click(object sender, RoutedEventArgs e)
         {
             App.GameBuilder = new NormalGameBuilder();
-            this.NavigationService.Navigate(new LevelPage(mainWindow));
+            this.NavigationService.Navigate(new LevelPage());
         }
 
         private void ScoresButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ScoresPage(mainWindow));
+            this.NavigationService.Navigate(new ScoresPage());
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new SettingsPage(mainWindow));
+            this.NavigationService.Navigate(new SettingsPage());
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
     }
 }
