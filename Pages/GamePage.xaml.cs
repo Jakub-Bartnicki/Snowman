@@ -167,7 +167,7 @@ namespace Snowman.Pages
             }
 
             ImageBrush rainDropSprite = new ImageBrush();
-            rainDropSprite.ImageSource = rainDrop.ImageSrc;
+            rainDropSprite.ImageSource = rainDrop.RainDropView.Image;
             
             Rectangle newRainDrop = new Rectangle
             {

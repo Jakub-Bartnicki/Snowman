@@ -9,9 +9,9 @@ namespace Snowman.RainDropFactory
 {
     class Snowflake : RainDrop
     {
-        public Snowflake()
+        public Snowflake(BitmapImage image) : base(image)
         {
-            ImageSrc = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowflake.png"));
+            // ImageSrc = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowflake.png"));
             this.Health = 2;
             this.Points = 2;
         }
