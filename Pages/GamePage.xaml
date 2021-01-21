@@ -9,6 +9,8 @@
       Title="GamePage">
 
     <Canvas Name="gameScreen" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
-        <Image Name="snowman" Height="80px" Width="70px" Source="../Images/snowman.png" Canvas.Left="565" Canvas.Top="500" />
+        <Rectangle Name="snowman" Height="80px" Width="70px" Fill="yellow" Canvas.Left="565" Canvas.Top="500" />
+        <Label Name="showPoints" Canvas.Bottom="0" Canvas.Right="90" Content="Points: " Foreground="White" FontSize="30" FontWeight="Bold"/>
+        <Label Name="showHealth" Canvas.Bottom="0" Content="Health: " Foreground="White" FontSize="30" FontWeight="Bold"/>
     </Canvas>
 </Page>

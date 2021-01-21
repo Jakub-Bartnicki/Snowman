@@ -8,14 +8,24 @@
 
 	<ItemGroup>
 	  <None Remove="Images\day.jpg" />
+	  <None Remove="Images\icicle.png" />
+	  <None Remove="Images\meteorite.png" />
 	  <None Remove="Images\night.jpg" />
+	  <None Remove="Images\snowball.png" />
+	  <None Remove="Images\snowflake.png" />
 	  <None Remove="Images\snowman.png" />
+	  <None Remove="Images\star.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Resource Include="Images\day.jpg" />
+	  <Resource Include="Images\icicle.png" />
+	  <Resource Include="Images\meteorite.png" />
 	  <Resource Include="Images\night.jpg" />
+	  <Resource Include="Images\snowball.png" />
+	  <Resource Include="Images\snowflake.png" />
 	  <Resource Include="Images\snowman.png" />
+	  <Resource Include="Images\star.png" />
 	</ItemGroup>
 
 </Project>

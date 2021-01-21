@@ -30,7 +30,7 @@ namespace Snowman.Pages
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            App.GameBuilder = new NormalGameBuilder();
+            App.GameBuilder = new BuffedGameBuilder();
             this.NavigationService.Navigate(new LevelPage(mainWindow));
         }
 

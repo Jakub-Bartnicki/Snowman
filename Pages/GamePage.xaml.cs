@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 
 using System.IO;
+using Snowman.RainDropFactory;
+using System.Linq;
 
 namespace Snowman.Pages
 {
@@ -23,7 +25,20 @@ namespace Snowman.Pages
     {
         private DispatcherTimer gameTimer = new DispatcherTimer();
         private bool goLeft, goRight;
-        
+        List<Rectangle> itemRemover= new List<Rectangle>();
+
+        Random rand = new Random();
+
+        int rainDropSpriteCounter = 0;
+        int rainDropCounter = 0;
+        int playerSpeed = 10;
+        int limit = 50;
+        int health = 0;
+        int points = 0;
+        int rainDropSpeed = 10;
+
+        Rect playerHitBox;
+
         public GamePage()
         {
             InitializeComponent();
@@ -32,22 +47,72 @@ namespace Snowman.Pages
 
             Application.Current.MainWindow.KeyDown += new KeyEventHandler(KeyIsDown);
             Application.Current.MainWindow.KeyUp += new KeyEventHandler(KeyIsUp);
-            gameTimer.Tick += GameTimerEvent;
+
             gameTimer.Interval = TimeSpan.FromMilliseconds(6);
+            gameTimer.Tick += GameLoop;
             gameTimer.Start();
+
+            gameScreen.Focus();
+
+            ImageBrush neutralRainDrop = new ImageBrush();
+            ImageBrush positiveRainDrop = new ImageBrush();
+            ImageBrush offensiveRainDrop = new ImageBrush();
+
+            ImageBrush playerImage = new ImageBrush();
+            playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman.png"));
+            snowman.Fill = playerImage;
         }
 
-        private void GameTimerEvent(object sender, EventArgs e)
+        private void GameLoop(object sender, EventArgs e)
         {
-            
+            playerHitBox = new Rect(Canvas.GetLeft(snowman), Canvas.GetTop(snowman), snowman.Width, snowman.Height);
+
+            rainDropCounter -= 1;
+
+            showPoints.Content = "Points: " + points;
+            showHealth.Content = "Health: " + health;
+
+            if (rainDropCounter < 0)
+            {
+                MakeRainDrop();
+                rainDropCounter = limit;
+            }
+
             if (goLeft == true && Canvas.GetLeft(snowman) > 0)
             {
-                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - 5);
+                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - playerSpeed);
             }
-            if (goRight == true && Canvas.GetLeft(snowman) + (snowman.Width * 2) < Application.Current.MainWindow.Width)
+            if (goRight == true && Canvas.GetLeft(snowman) + 90 < Application.Current.MainWindow.Width)
             {
-                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + 5);
+                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
             }
+
+            foreach (var x in gameScreen.Children.OfType<Rectangle>())
+            {
+                if (x is Rectangle && (string)x.Tag == "raindrop")
+                {
+                    Canvas.SetTop(x, Canvas.GetTop(x) + rainDropSpeed);
+
+                    if (Canvas.GetTop(x) > 650)
+                    {
+                        itemRemover.Add(x);
+                    }
+
+                    Rect rainDropHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    if (playerHitBox.IntersectsWith(rainDropHitBox))
+                    {
+                        itemRemover.Add(x);
+                        //Change health
+                    }
+                }
+            }
+
+            foreach (Rectangle i in itemRemover)
+            {
+                gameScreen.Children.Remove(i);
+            }
+
         }
 
         public void KeyIsDown(object sender, KeyEventArgs e)
@@ -62,6 +127,38 @@ namespace Snowman.Pages
             // Game.Snowman.endMove(sender, e);
             if (e.Key == Key.Left) goLeft = false;
             if (e.Key == Key.Right) goRight = false;
+        }
+
+        private void MakeRainDrop()
+        {
+            ImageBrush rainDropSprite = new ImageBrush();
+
+            rainDropSpriteCounter = rand.Next(1, 4);
+
+            switch (rainDropSpriteCounter)
+            {
+                case 1:
+                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowflake.png"));
+                    break;
+                case 2:
+                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/icicle.png"));
+                    break;
+                case 3:
+                    rainDropSprite.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/star.png"));
+                    break;
+            }
+
+            Rectangle newRainDrop = new Rectangle
+            {
+                Tag = "raindrop",
+                Height = 50,
+                Width = 50,
+                Fill = rainDropSprite
+            };
+
+            Canvas.SetTop(newRainDrop, -100);
+            Canvas.SetLeft(newRainDrop, rand.Next(300, 900));
+            gameScreen.Children.Add(newRainDrop);
         }
     }
 }
