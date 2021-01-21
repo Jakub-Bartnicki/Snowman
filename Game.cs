@@ -21,7 +21,6 @@ namespace Snowman
 
         public Game()
         {
-            this.FactoryMethod();
         }
 
         public List<RainDrop> RainDropList
@@ -29,7 +28,9 @@ namespace Snowman
             get { return rainDropList; }
         }
 
-        public virtual void FactoryMethod() { }
+        public abstract RainDrop CreateNeutralRainDrop();
+        public abstract RainDrop CreateOffensiveRainDrop();
+        public abstract RainDrop CreatePositiveRainDrop();
 
         public virtual RainDrop DrawRainDrop()
         {
