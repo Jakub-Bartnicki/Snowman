@@ -42,7 +42,7 @@ namespace Snowman.States
 
         public void blockTime()
         {
-            aTimer.Interval = 5000;
+            aTimer.Interval = 3000;
 
             aTimer.Elapsed += OnTimedEvent;
 

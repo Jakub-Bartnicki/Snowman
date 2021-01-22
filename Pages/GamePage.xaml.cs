@@ -93,11 +93,11 @@ namespace Snowman.Pages
             if (rainDropCounter <= 0)
             {
                 draw = rand.Next(1, 101);
-                if (draw >=1 && draw < 40)
+                if (draw >=1 && draw < 60)
                 {
                     MakeRainDrop("NeutralRainDrop");
                 }
-                else if (draw >= 40 && draw < 60)
+                else if (draw >= 60 && draw < 65)
                 {
                     MakeRainDrop("PositiveRainDrop");
                 } else
@@ -135,9 +135,7 @@ namespace Snowman.Pages
                     if (playerHitBox.IntersectsWith(rainDropHitBox))
                     {
                         itemRemover.Add(rect.Key);
-                        points += rect.Value.Points;
-                        App.game.Snowman.Health += rect.Value.Health;
-                        setSnowmanState(rect.Value.Effect);
+                        SnowmanState(rect.Value.Health, rect.Value.Points, rect.Value.Effect);
                     }
                 }
             }
@@ -150,7 +148,34 @@ namespace Snowman.Pages
 
         }
 
-        private void setSnowmanState(String effect)
+        private void SnowmanReaction(int health, int points, String effect)
+        {
+            if (App.game.Snowman.Buffed)
+            {
+                if(effect.Equals("buffed"))
+                {
+                    App.game.Snowman.Health += health;
+                    this.points += points;
+                }
+                else if (effect.Equals("blocked"))
+                {
+
+                }
+                else
+                {
+                    App.game.Snowman.Health += health;
+                    this.points += points;
+                }
+            }
+            else
+            {
+                App.game.Snowman.Health += health;
+                this.points += points;
+            }
+
+        }
+
+        private void SnowmanState(int health, int points, String effect)
         {
             if (App.game.Buffs)
             {
@@ -158,6 +183,13 @@ namespace Snowman.Pages
                     App.game.Snowman.buffSnowman();
                 else if (effect.Equals("blocked"))
                     App.game.Snowman.blockSnowman();
+
+                SnowmanReaction(health, points, effect);
+
+            } else
+            {
+                App.game.Snowman.Health += health;
+                this.points += points;
             }
         }
 
@@ -204,7 +236,7 @@ namespace Snowman.Pages
             };
 
             Canvas.SetTop(newRainDrop, -100);
-            Canvas.SetLeft(newRainDrop, rand.Next(300, 900));
+            Canvas.SetLeft(newRainDrop, rand.Next(100, 1100));
             gameScreen.Children.Add(newRainDrop);
 
             map.Add(newRainDrop, rainDrop);

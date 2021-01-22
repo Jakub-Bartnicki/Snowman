@@ -27,6 +27,7 @@ namespace Snowman.States
 
         public override void buff()
         {
+            aTimer.Enabled = false;
             this.Snowman.Img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowman_buffed.png"));
             this.Snowman.Moveable = true;
             this.Snowman.Buffed = true;
@@ -43,7 +44,7 @@ namespace Snowman.States
 
         public void blockTime()
         {
-            aTimer.Interval = 3000;
+            aTimer.Interval = 1000;
 
             aTimer.Elapsed += OnTimedEvent;
 
