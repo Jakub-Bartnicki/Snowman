@@ -84,44 +84,63 @@ namespace Snowman.Pages
             showHealth.Content = "Health: " + App.Game.Snowman.Health;
 
             // End game if snowman have no health
-            if(App.Game.Snowman.Health == 0)
+            if (App.Game.Snowman.Health == 0)
             {
                 EndGame();
                 return;
             }
 
-            // Add falling item depending on the difficulty level
             if (rainDropCounter <= 0)
             {
-                draw = rand.Next(1, 101);
-                if (draw >=1 && draw < 50)
-                {
-                    MakeRainDrop("NeutralRainDrop");
-                }
-                else if (draw >= 50 && draw < 55)
-                {
-                    MakeRainDrop("PositiveRainDrop");
-                } else
-                {
-                    MakeRainDrop("OffensiveRainDrop");
-                }
-                rainDropCounter = rainDropSpawnFrequency;
+                AddItem();
             }
 
             // Check if snowman can move
             if (App.Game.Snowman.Moveable)
             {
-                if (goLeft == true && Canvas.GetLeft(snowman) > 0)
-                {
-                    Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - playerSpeed);
-                }
-                if (goRight == true && Canvas.GetLeft(snowman) + 90 < Application.Current.MainWindow.Width)
-                {
-                    Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
-                }
+                MoveSnowman();
             }
 
-            // Select falling items to delete
+            SelectItemToDelete();
+            DeleteItems();
+
+        }
+
+        // Check if snowman can move
+        private void MoveSnowman()
+        {
+            if (goLeft == true && Canvas.GetLeft(snowman) > 0)
+            {
+                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - playerSpeed);
+            }
+            if (goRight == true && Canvas.GetLeft(snowman) + 90 < Application.Current.MainWindow.Width)
+            {
+                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
+            }
+        }
+
+        // Add falling item depending on the difficulty level
+        private void AddItem()
+        {
+            draw = rand.Next(1, 101);
+            if (draw >= 1 && draw < 50)
+            {
+                MakeRainDrop("NeutralRainDrop");
+            }
+            else if (draw >= 50 && draw < 55)
+            {
+                MakeRainDrop("PositiveRainDrop");
+            }
+            else
+            {
+                MakeRainDrop("OffensiveRainDrop");
+            }
+            rainDropCounter = rainDropSpawnFrequency;
+        }
+
+        // Select falling items to delete
+        private void SelectItemToDelete()
+        {
             foreach (var rect in map)
             {
                 Canvas.SetTop(rect.Key, Canvas.GetTop(rect.Key) + rainDropSpeed);
@@ -140,18 +159,20 @@ namespace Snowman.Pages
                     if (playerHitBox.IntersectsWith(rainDropHitBox))
                     {
                         itemRemover.Add(rect.Key);
-                        SnowmanReaction(rect.Value.Health, rect.Value.Points, rect.Value.Effect);   
+                        SnowmanReaction(rect.Value.Health, rect.Value.Points, rect.Value.Effect);
                     }
                 }
             }
+        }
 
-            // Deleting falling items
+        // Deleting falling items
+        private void DeleteItems()
+        {
             foreach (Rectangle i in itemRemover)
             {
                 gameScreen.Children.Remove(i);
                 map.Remove(i);
             }
-
         }
 
 
