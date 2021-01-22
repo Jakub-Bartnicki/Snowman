@@ -75,7 +75,6 @@ namespace Snowman.Pages
                 App.GameBuilder.setGamemodeOff();
             }
             App.newGame();
-            MessageBox.Show("info: " + App.game.GetType());
             this.NavigationService.Navigate(new GamePage());
         }
     }

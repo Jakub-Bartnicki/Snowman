@@ -26,20 +26,17 @@ namespace Snowman.Pages
         private static Dictionary<Rectangle, RainDrop> map;
         private DispatcherTimer gameTimer = new DispatcherTimer();
         private bool goLeft, goRight;
-        List<Rectangle> itemRemover= new List<Rectangle>();
+        private List<Rectangle> itemRemover= new List<Rectangle>();
 
-        Random rand = new Random();
+        private Random rand = new Random();
 
-        String gametype;
-        int draw;
+        private int draw;
 
-        int rainDropSpriteCounter = 0;
-        int rainDropCounter = 0;
-        int playerSpeed = 10;
-        int limit = 50;
-        int health = 0;
-        int points = 0;
-        int rainDropSpeed = 10;
+        private int rainDropCounter = 0;
+        private int playerSpeed = 10;
+        private int points = 0;
+        private int rainDropSpeed = 10;
+        private int rainDropSpawnFrequency;
 
         Rect playerHitBox;
 
@@ -49,15 +46,10 @@ namespace Snowman.Pages
 
             map = new Dictionary<Rectangle, RainDrop>();
 
-            gameScreen.Focus();
-
             Application.Current.MainWindow.KeyDown += new KeyEventHandler(KeyIsDown);
             Application.Current.MainWindow.KeyUp += new KeyEventHandler(KeyIsUp);
 
             gameTimer.Interval = TimeSpan.FromMilliseconds(6);
-            
-            gametype = App.game.GetType().ToString();
-
             gameTimer.Tick += GameLoop;
             gameTimer.Start();
 
@@ -66,6 +58,18 @@ namespace Snowman.Pages
             ImageBrush playerImage = new ImageBrush();
             playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman.png"));
             snowman.Fill = playerImage;
+
+
+            if (App.game.Difficulty == 0) // easy difficulty
+            {
+                rainDropSpawnFrequency = 30;
+            } else if (App.game.Difficulty == 1) // normal difficulty
+            {
+                rainDropSpawnFrequency = 20;
+            } else // hard difficulty
+            {
+                rainDropSpawnFrequency = 10;
+            }
         }
 
         private void GameLoop(object sender, EventArgs e)
@@ -83,7 +87,7 @@ namespace Snowman.Pages
                 return;
             }
 
-            if (rainDropCounter < 30)
+            if (rainDropCounter <= 0)
             {
                 draw = rand.Next(1, 101);
                 if (draw >=1 && draw < 40)
@@ -97,7 +101,7 @@ namespace Snowman.Pages
                 {
                     MakeRainDrop("OffensiveRainDrop");
                 }
-                rainDropCounter = limit;
+                rainDropCounter = rainDropSpawnFrequency;
             }
 
             if (goLeft == true && Canvas.GetLeft(snowman) > 0)
@@ -199,6 +203,7 @@ namespace Snowman.Pages
             backButton.Content = "BACK";
             backButton.Width = 200;
             backButton.Height = 30;
+            gameTimer.Tick -= GameLoop;
             backButton.Click += backButton_Click;
         }
 

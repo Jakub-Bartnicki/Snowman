@@ -40,6 +40,7 @@ namespace Snowman.Snowman
 
         public SnowMan(State state)
         {
+            state.setSnowman(this);
             this.state = state;
             health = 100;
             moveable = true;
