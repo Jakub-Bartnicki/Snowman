@@ -20,9 +20,9 @@ namespace Snowman.States
         }
         public override void block()
         {
+            // Refresh block time
             aTimer.Enabled = false;
             blockTime();
-            // already locked, refresh lock time
         }
 
         public override void buff()

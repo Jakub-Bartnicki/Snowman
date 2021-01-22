@@ -16,22 +16,20 @@ namespace Snowman.States
 
         public BuffedState()
         {
+            aTimer.Enabled = false;
             blockTime();
         }
 
         public override void block()
         {
-            this.Snowman.Img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowman_blocked.png"));
-            this.Snowman.Moveable = false;
-            this.Snowman.Buffed = false;
-            this.Snowman.TransitionTo(new LockedState());
+            // Not working if snowman is buffed
         }
 
         public override void buff()
         {
+            // Refresh buff time
             aTimer.Enabled = false;
             blockTime();
-            // already locked, refresh lock time
         }
 
         public override void normalize()
@@ -44,7 +42,7 @@ namespace Snowman.States
 
         public void blockTime()
         {
-            aTimer.Interval = 3000;
+            aTimer.Interval = 5000;
 
             aTimer.Elapsed += OnTimedEvent;
 

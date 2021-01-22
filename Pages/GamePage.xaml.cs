@@ -137,10 +137,7 @@ namespace Snowman.Pages
                         itemRemover.Add(rect.Key);
                         points += rect.Value.Points;
                         App.game.Snowman.Health += rect.Value.Health;
-                        if (rect.Value.Effect.Equals("buffed"))
-                            App.game.Snowman.buffSnowman();
-                        else if (rect.Value.Effect.Equals("blocked"))
-                            App.game.Snowman.blockSnowman();
+                        setSnowmanState(rect.Value.Effect);
                     }
                 }
             }
@@ -151,6 +148,17 @@ namespace Snowman.Pages
                 map.Remove(i);
             }
 
+        }
+
+        private void setSnowmanState(String effect)
+        {
+            if (App.game.Buffs)
+            {
+                if (effect.Equals("buffed"))
+                    App.game.Snowman.buffSnowman();
+                else if (effect.Equals("blocked"))
+                    App.game.Snowman.blockSnowman();
+            }
         }
 
         public void KeyIsDown(object sender, KeyEventArgs e)
