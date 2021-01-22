@@ -11,6 +11,7 @@ namespace Snowman.RainDropFactory
         {
             this.Health = 10;
             this.Points = 10;
+            this.Effect = "neutral";
         }
     }
 }

@@ -7,17 +7,12 @@ namespace Snowman.RainDropFactory
 {
     class Meteorite : RainDrop
     {
-        String effect = "blocked";
-
         public Meteorite(BitmapImage image) : base(image)
         {
             this.Health = -30;
             this.Points = -10;
+            this.Effect = "blocked";
         }
 
-        public String AddEffect()
-        {
-            return effect;
-        }
     }
 }

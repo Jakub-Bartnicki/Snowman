@@ -25,11 +25,6 @@ namespace Snowman.Pages
             InitializeComponent();
         }
 
-        public MenuPage()
-        {
-            InitializeComponent();
-        }
-
         private void BuffedGameButton_Click(object sender, RoutedEventArgs e)
         {
             App.GameBuilder = new BuffedGameBuilder();

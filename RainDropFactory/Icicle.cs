@@ -13,6 +13,7 @@ namespace Snowman.RainDropFactory
         {
             this.Health = -15;
             this.Points = 0;
+            this.Effect = "blocked";
         }
     }
 }

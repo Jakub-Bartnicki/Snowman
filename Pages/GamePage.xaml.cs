@@ -41,6 +41,7 @@ namespace Snowman.Pages
         int points = 0;
         int rainDropSpeed = 10;
 
+        ImageBrush playerImage = new ImageBrush();
         Rect playerHitBox;
 
         public GamePage()
@@ -63,13 +64,15 @@ namespace Snowman.Pages
 
             gameScreen.Focus();
 
-            ImageBrush playerImage = new ImageBrush();
-            playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman.png"));
+            playerImage.ImageSource = App.game.Snowman.Img;
             snowman.Fill = playerImage;
         }
 
         private void GameLoop(object sender, EventArgs e)
         {
+            playerImage.ImageSource = App.game.Snowman.Img;
+            snowman.Fill = playerImage;
+
             playerHitBox = new Rect(Canvas.GetLeft(snowman), Canvas.GetTop(snowman), snowman.Width, snowman.Height);
 
             rainDropCounter -= 1;
@@ -100,14 +103,18 @@ namespace Snowman.Pages
                 rainDropCounter = limit;
             }
 
-            if (goLeft == true && Canvas.GetLeft(snowman) > 0)
+            if (App.game.Snowman.Moveable)
             {
-                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - playerSpeed);
+                if (goLeft == true && Canvas.GetLeft(snowman) > 0)
+                {
+                    Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) - playerSpeed);
+                }
+                if (goRight == true && Canvas.GetLeft(snowman) + 90 < Application.Current.MainWindow.Width)
+                {
+                    Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
+                }
             }
-            if (goRight == true && Canvas.GetLeft(snowman) + 90 < Application.Current.MainWindow.Width)
-            {
-                Canvas.SetLeft(snowman, Canvas.GetLeft(snowman) + playerSpeed);
-            }
+
 
             foreach (var rect in map)
             {
@@ -126,11 +133,10 @@ namespace Snowman.Pages
                         itemRemover.Add(rect.Key);
                         points += rect.Value.Points;
                         App.game.Snowman.Health += rect.Value.Health;
-                        //App.game.Snowman.
-                        //Zmiana stanu bałwana
-                        //ImageBrush playerImage = new ImageBrush();
-                        //playerImage.ImageSource = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "../Images/snowman_blocked.png"));
-                        //snowman.Fill = playerImage;
+                        if (rect.Value.Effect.Equals("buffed"))
+                            App.game.Snowman.buffSnowman();
+                        else if (rect.Value.Effect.Equals("blocked"))
+                            App.game.Snowman.blockSnowman();
                     }
                 }
             }

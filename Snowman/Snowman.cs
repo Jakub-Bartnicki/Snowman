@@ -3,18 +3,28 @@ using Snowman.States;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 
 namespace Snowman.Snowman
 {
     public class SnowMan
     {
-        State state = null;
+        private BitmapImage img;
+        private State state = null;
         private int health;
         private bool moveable;
         private bool buffed;
 
+
+        public BitmapImage Img
+        {
+            get { return img; }
+            set { img = value; }
+        }
         public int Health
         {
             get { return health; }
@@ -40,7 +50,9 @@ namespace Snowman.Snowman
 
         public SnowMan(State state)
         {
+            state.setSnowman(this);
             this.state = state;
+            img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowman.png"));
             health = 100;
             moveable = true;
             buffed = false;
@@ -67,7 +79,7 @@ namespace Snowman.Snowman
             this.state.normalize();
         }
 
-        public void buffSnowman() 
+        public void buffSnowman()
         {
             this.state.buff();
         }

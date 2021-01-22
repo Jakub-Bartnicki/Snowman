@@ -12,6 +12,7 @@ namespace Snowman.RainDropFactory
         public RainDropView RainDropView { get; set; }
         public int Health { get; set; }
         public int Points { get; set; }
+        public String Effect { get; set; }
 
         public RainDrop(BitmapImage image)
         {
