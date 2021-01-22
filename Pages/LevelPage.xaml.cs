@@ -24,36 +24,43 @@ namespace Snowman.Pages
             InitializeComponent();
         }
 
+        // event after clicking difficulty easy button
         private void EasyLevel_Click(object sender, RoutedEventArgs e)
         {
             MediumLevelButton.IsChecked = false;
             HardLevelButton.IsChecked = false;
         }
 
+        // event after clicking difficulty normal button
         private void MediumLevel_Click(object sender, RoutedEventArgs e)
         {
             EasyLevelButton.IsChecked = false;
             HardLevelButton.IsChecked = false;
         }
 
+        // event after clicking difficulty hard button
         private void HardLevel_Click(object sender, RoutedEventArgs e)
         {
             MediumLevelButton.IsChecked = false;
             EasyLevelButton.IsChecked = false;
         }
 
+        // checking checkbox
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        // changing view to previous view after clicking back button
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new MenuPage());
         }
 
+        // starting the game after clicking start button
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
+            // checking game level
             if (EasyLevelButton.IsChecked == true) {
                 App.GameBuilder.setDifficultyEasy();
 
@@ -67,6 +74,7 @@ namespace Snowman.Pages
                 MessageBox.Show("You have to choose game level");
                 return;
             }
+            // checking checkbox
             if(SnowmanCheckBox.IsChecked == true)
             {
                 App.GameBuilder.setGamemodeOn();
@@ -74,6 +82,7 @@ namespace Snowman.Pages
             {
                 App.GameBuilder.setGamemodeOff();
             }
+            // starting the game
             App.newGame();
             this.NavigationService.Navigate(new GamePage());
         }

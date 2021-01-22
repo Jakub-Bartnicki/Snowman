@@ -25,25 +25,18 @@
                 Margin="300,195,300,225"
                />
 
-        <Button x:Name="ScoresButton"
-                Click="ScoresButton_Click"
-                Content="SCORES" 
-                Width="200"
-                Height="30"
-                Margin="300,262,300,158"/>
-
         <Button x:Name="SettingsButton"
                 Content="SETTINGS"
                 Click="SettingsButton_Click"
                 Width="200"
                 Height="30"
-                Margin="300,303,300,117"/>
+                Margin="300,262,300,158"/>
 
         <Button x:Name="ExitButton"
                 Content="EXIT"
                 Click="ExitButton_Click"
                 Width="200" 
                 Height="30"
-                Margin="300,372,300,48"/>
+                Margin="300,329,300,91"/>
     </Grid>
 </Page>

@@ -10,8 +10,8 @@ namespace Snowman.Themes
 {
     public class Theme
     {
+        private static readonly object _lock = new object();
         private static Theme instance;
-        protected static readonly object _lock = new object();
         private bool lightTheme;
         private bool darkTheme;
 
@@ -21,6 +21,7 @@ namespace Snowman.Themes
             darkTheme = true;
         }
 
+        // returns singleton theme
         public static Theme getInstance()
         {
             if (instance == null)
@@ -36,6 +37,7 @@ namespace Snowman.Themes
             return instance;
         }
 
+        // set light game theme
         public void setLightTheme()
         { 
             if (darkTheme)
@@ -46,6 +48,7 @@ namespace Snowman.Themes
             }
         }
         
+        // set dark game theme
         public void setDarkTheme()
         { 
             if (lightTheme)
@@ -56,6 +59,7 @@ namespace Snowman.Themes
             }
         }
 
+        // display background image
         public void displayBackground()
         {
             if (lightTheme)

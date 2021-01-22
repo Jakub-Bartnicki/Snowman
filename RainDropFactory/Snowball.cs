@@ -6,9 +6,9 @@ namespace Snowman.RainDropFactory
     {
         public Snowball(BitmapImage image) : base(image)
         {
-            this.Health = 10;
-            this.Points = 10;
-            this.Effect = "neutral";
+            this.health = 10;
+            this.points = 10;
+            this.effect = "neutral";
         }
     }
 }

@@ -6,9 +6,9 @@ namespace Snowman.RainDropFactory
     {
         public Meteorite(BitmapImage image) : base(image)
         {
-            this.Health = -30;
-            this.Points = -10;
-            this.Effect = "blocked";
+            this.health = -30;
+            this.points = -10;
+            this.effect = "blocked";
         }
 
     }

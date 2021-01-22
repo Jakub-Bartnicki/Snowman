@@ -24,16 +24,19 @@ namespace Snowman.Pages
             InitializeComponent();
         }
 
+        // changing view to previous after clicking Back button
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new MenuPage());
         }
 
+        // changing theme to light after clicking Light Theme button
         private void LightThemeButton_Click(object sender, RoutedEventArgs e)
         {
             Theme.getInstance().setLightTheme();
         }
 
+        // changing theme to light after clicking Dark Theme button
         private void DarkThemeButton_Click(object sender, RoutedEventArgs e)
         {
             Theme.getInstance().setDarkTheme();

@@ -10,6 +10,7 @@ namespace Snowman.RainDropViews
     {
         private static List<RainDropView> rainDropViews = new List<RainDropView>();
 
+        // returns copy of created view of rain drop object or returns new one
         public static RainDropView getRainDropView(BitmapImage image)
         {
             RainDropView rainDropView;

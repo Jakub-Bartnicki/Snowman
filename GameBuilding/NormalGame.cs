@@ -10,32 +10,27 @@ namespace Snowman.GameBuilding
 {
     public class NormalGame : Game
     {
-        public NormalGame() : base()
-        {
-
-        }
-
         public override RainDrop CreateNeutralRainDrop()
         {
+            // snowflake image
             BitmapImage img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowflake.png"));
             Snowflake snowflake = new Snowflake(img);
-            RainDropList.Add(snowflake);
             return snowflake;
         }
 
         public override RainDrop CreateOffensiveRainDrop()
         {
+            // icicle image
             BitmapImage img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/icicle.png"));
             Icicle icicle = new Icicle(img);
-            RainDropList.Add(icicle);
             return icicle;
         }
 
         public override RainDrop CreatePositiveRainDrop()
         {
+            // star image
             BitmapImage img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/star.png"));
             Star star = new Star(img);
-            RainDropList.Add(star);
             return star;
         }
     }

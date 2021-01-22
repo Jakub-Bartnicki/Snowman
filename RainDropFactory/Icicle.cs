@@ -6,9 +6,9 @@ namespace Snowman.RainDropFactory
     {
         public Icicle(BitmapImage image) : base(image)
         {
-            this.Health = -15;
-            this.Points = 0;
-            this.Effect = "blocked";
+            this.health = -15;
+            this.points = 0;
+            this.effect = "blocked";
         }
     }
 }

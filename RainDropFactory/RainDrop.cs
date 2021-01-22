@@ -7,14 +7,30 @@ namespace Snowman.RainDropFactory
 {
     abstract public class RainDrop : IRainDrop
     {
-        public RainDropView RainDropView { get; set; }
-        public int Health { get; set; }
-        public int Points { get; set; }
-        public String Effect { get; set; }
+        protected RainDropView rainDropView;
+        protected int health;
+        protected int points;
+        protected string effect;
+        public RainDropView RainDropView 
+        {
+            get { return rainDropView; }
+        }
+        public int Health 
+        { 
+            get { return health; }
+        }
+        public int Points
+        {
+            get { return points; }
+        }
+        public String Effect
+        {
+            get { return effect; }
+        }
 
         public RainDrop(BitmapImage image)
         {
-            this.RainDropView = RainDropViewFactory.getRainDropView(image);
+            this.rainDropView = RainDropViewFactory.getRainDropView(image);
         }
     }
 }

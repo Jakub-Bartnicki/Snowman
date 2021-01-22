@@ -26,6 +26,7 @@ namespace Snowman.Pages
             InitializeComponent();
         }
 
+        // set theme after loading application and set MenuPage view
         private void Main_Loaded(object sender, RoutedEventArgs e)
         {
             Theme.getInstance().displayBackground();

@@ -25,28 +25,27 @@ namespace Snowman.Pages
             InitializeComponent();
         }
 
+        // starting BuffedGame after clicking Buffed Game button
         private void BuffedGameButton_Click(object sender, RoutedEventArgs e)
         {
             App.GameBuilder = new BuffedGameBuilder();
             this.NavigationService.Navigate(new LevelPage());
         }
 
+        // starting NormalGame after clicking Normal Game button
         private void NormalGameButton_Click(object sender, RoutedEventArgs e)
         {
             App.GameBuilder = new NormalGameBuilder();
             this.NavigationService.Navigate(new LevelPage());
         }
 
-        private void ScoresButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new ScoresPage());
-        }
-
+        // change view to setting view after clicking Settings button
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SettingsPage());
         }
 
+        // close application after clicking Exit button
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

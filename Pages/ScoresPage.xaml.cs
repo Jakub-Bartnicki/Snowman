@@ -22,6 +22,7 @@ namespace Snowman.Pages
             InitializeComponent();
         }
 
+        // changing view to previous after clicking Back button
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new MenuPage());

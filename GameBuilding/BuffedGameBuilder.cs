@@ -14,6 +14,7 @@ namespace Snowman.GameBuilding
             this.reset();
         }
 
+        // reset game
         public void reset()
         {
             this.buffedGame = new BuffedGame();
