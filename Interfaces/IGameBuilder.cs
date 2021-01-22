@@ -2,16 +2,16 @@
 {
     public interface IGameBuilder
     {
-        void setGamemodeOn();
+        public void setGamemodeOn();
 
-        void setGamemodeOff();
+        public void setGamemodeOff();
 
-        void setDifficultyEasy();
+        public void setDifficultyEasy();
 
-        void setDifficultyNormal();
+        public void setDifficultyNormal();
 
-        void setDifficultyHard();
+        public void setDifficultyHard();
 
-        Game GetGame();
+        public Game GetGame();
     }
 }

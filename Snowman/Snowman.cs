@@ -14,7 +14,6 @@ namespace Snowman.Snowman
         private bool moveable;
         private bool buffed;
 
-
         public BitmapImage Img
         {
             get { return img; }

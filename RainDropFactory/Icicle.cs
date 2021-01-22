@@ -2,7 +2,7 @@
 
 namespace Snowman.RainDropFactory
 {
-    class Icicle : RainDrop
+    public class Icicle : RainDrop
     {
         public Icicle(BitmapImage image) : base(image)
         {

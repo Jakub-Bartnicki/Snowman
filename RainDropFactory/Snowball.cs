@@ -2,7 +2,7 @@
 
 namespace Snowman.RainDropFactory
 {
-    class Snowball : RainDrop
+    public class Snowball : RainDrop
     {
         public Snowball(BitmapImage image) : base(image)
         {

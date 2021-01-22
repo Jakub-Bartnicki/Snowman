@@ -10,12 +10,12 @@ namespace Snowman
     public partial class App : Application
     {
         private static IGameBuilder gameBuilder;
-        public static Game game;
-        public Theme theme;
+        private static Game game;
+        public static Game Game { get { return game; } }
 
         public App() : base()
         {
-            theme = Theme.getInstance();
+            Theme.getInstance();
         }
 
         public static IGameBuilder GameBuilder

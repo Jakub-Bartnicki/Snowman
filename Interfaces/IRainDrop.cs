@@ -2,7 +2,7 @@
 
 namespace Snowman.Interfaces
 {
-    interface IRainDrop
+    public interface IRainDrop
     {
         public int Health { get; set; }
         public int Points { get; set; }

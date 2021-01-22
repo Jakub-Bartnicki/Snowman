@@ -12,13 +12,13 @@ namespace Snowman.Themes
     {
         private static Theme instance;
         protected static readonly object _lock = new object();
-        public bool LightTheme;
-        public bool DarkTheme;
+        private bool lightTheme;
+        private bool darkTheme;
 
         private Theme()
         {
-            LightTheme = false;
-            DarkTheme = true;
+            lightTheme = false;
+            darkTheme = true;
         }
 
         public static Theme getInstance()
@@ -38,27 +38,27 @@ namespace Snowman.Themes
 
         public void setLightTheme()
         { 
-            if (DarkTheme)
+            if (darkTheme)
             {
-                LightTheme = LightTheme != true;
-                DarkTheme = DarkTheme != true;
+                lightTheme = lightTheme != true;
+                darkTheme = darkTheme != true;
                 displayBackground();
             }
         }
         
         public void setDarkTheme()
         { 
-            if (LightTheme)
+            if (lightTheme)
             {
-                LightTheme = LightTheme != true;
-                DarkTheme = DarkTheme != true;
+                lightTheme = lightTheme != true;
+                darkTheme = darkTheme != true;
                 displayBackground();
             }
         }
 
         public void displayBackground()
         {
-            if (LightTheme)
+            if (lightTheme)
                 Application.Current.MainWindow.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/day.jpg")));
             else
                 Application.Current.MainWindow.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/night.jpg")));

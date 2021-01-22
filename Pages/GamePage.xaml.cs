@@ -48,25 +48,25 @@ namespace Snowman.Pages
 
             gameScreen.Focus();
 
-            playerImage.ImageSource = App.game.Snowman.Img;
+            playerImage.ImageSource = App.Game.Snowman.Img;
             snowman.Fill = playerImage;
 
 
-            if (App.game.Difficulty == 0) // easy difficulty
-            {
-                rainDropSpawnFrequency = 30;
-            } else if (App.game.Difficulty == 1) // normal difficulty
+            if (App.Game.Difficulty == 0) // easy difficulty
             {
                 rainDropSpawnFrequency = 20;
-            } else // hard difficulty
+            } else if (App.Game.Difficulty == 1) // normal difficulty
             {
                 rainDropSpawnFrequency = 10;
+            } else // hard difficulty
+            {
+                rainDropSpawnFrequency = 5;
             }
         }
 
         private void GameLoop(object sender, EventArgs e)
         {
-            playerImage.ImageSource = App.game.Snowman.Img;
+            playerImage.ImageSource = App.Game.Snowman.Img;
             snowman.Fill = playerImage;
 
             playerHitBox = new Rect(Canvas.GetLeft(snowman), Canvas.GetTop(snowman), snowman.Width, snowman.Height);
@@ -74,9 +74,9 @@ namespace Snowman.Pages
             rainDropCounter -= 1;
 
             showPoints.Content = "Points: " + points;
-            showHealth.Content = "Health: " + App.game.Snowman.Health;
+            showHealth.Content = "Health: " + App.Game.Snowman.Health;
 
-            if(App.game.Snowman.Health == 0)
+            if(App.Game.Snowman.Health == 0)
             {
                 EndGame();
                 return;
@@ -99,7 +99,7 @@ namespace Snowman.Pages
                 rainDropCounter = rainDropSpawnFrequency;
             }
 
-            if (App.game.Snowman.Moveable)
+            if (App.Game.Snowman.Moveable)
             {
                 if (goLeft == true && Canvas.GetLeft(snowman) > 0)
                 {
@@ -143,18 +143,18 @@ namespace Snowman.Pages
         // Checking what type of game we play
         private void SnowmanReaction(int health, int points, String effect)
         {
-            if (App.game.Buffs)
+            if (App.Game.Buffs)
             {
                 if (effect.Equals("buffed"))
-                    App.game.Snowman.buffSnowman();
+                    App.Game.Snowman.buffSnowman();
                 else if (effect.Equals("blocked"))
-                    App.game.Snowman.blockSnowman();
+                    App.Game.Snowman.blockSnowman();
 
                 SetSnowmanAttributes(health, points, effect);
 
             } else //If it is normal game set health and points
             {
-                App.game.Snowman.Health += health;
+                App.Game.Snowman.Health += health;
                 this.points += points;
             }
         }
@@ -162,11 +162,11 @@ namespace Snowman.Pages
         // Changing health and points in Buffed Game
         private void SetSnowmanAttributes(int health, int points, String effect)
         {
-            if (App.game.Snowman.Buffed)
+            if (App.Game.Snowman.Buffed)
             {
                 if (effect.Equals("buffed"))
                 {
-                    App.game.Snowman.Health += health;
+                    App.Game.Snowman.Health += health;
                     this.points += points;
                 }
                 else if (effect.Equals("blocked"))
@@ -175,13 +175,13 @@ namespace Snowman.Pages
                 }
                 else
                 {
-                    App.game.Snowman.Health += health;
+                    App.Game.Snowman.Health += health;
                     this.points += points;
                 }
             }
             else
             {
-                App.game.Snowman.Health += health;
+                App.Game.Snowman.Health += health;
                 this.points += points;
             }
 
@@ -208,13 +208,13 @@ namespace Snowman.Pages
             RainDrop rainDrop;
             if (rainDropType == "NeutralRainDrop")
             {
-                rainDrop = App.game.CreateNeutralRainDrop();
+                rainDrop = App.Game.CreateNeutralRainDrop();
             } else if (rainDropType.Equals("OffensiveRainDrop"))
             {
-                rainDrop = App.game.CreateOffensiveRainDrop();
+                rainDrop = App.Game.CreateOffensiveRainDrop();
             } else if (rainDropType.Equals("PositiveRainDrop"))
             {
-                rainDrop = App.game.CreatePositiveRainDrop();
+                rainDrop = App.Game.CreatePositiveRainDrop();
             } else
             {
                 return;
