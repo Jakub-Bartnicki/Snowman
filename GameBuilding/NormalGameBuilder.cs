@@ -15,6 +15,7 @@ namespace Snowman.GameLevel
             this.reset();
         }
 
+        // reset game
         public void reset()
         {
             this.normalGame = new NormalGame();

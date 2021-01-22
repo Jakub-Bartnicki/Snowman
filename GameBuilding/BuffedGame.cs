@@ -12,25 +12,25 @@ namespace Snowman.GameBuilding
     {
         public override RainDrop CreateNeutralRainDrop()
         {
+            // snowball image
             BitmapImage img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowball.png"));
             Snowball snowball = new Snowball(img);
-            RainDropList.Add(snowball);
             return snowball;
         }
 
         public override RainDrop CreateOffensiveRainDrop()
         {
+            // meteorite image
             BitmapImage img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/meteorite.png"));
             Meteorite meteorite = new Meteorite(img);
-            RainDropList.Add(meteorite);
             return meteorite;
         }
 
         public override RainDrop CreatePositiveRainDrop()
         {
+            // star image
             BitmapImage img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/star.png"));
             Star star = new Star(img);
-            RainDropList.Add(star);
             return star;
         }
     }

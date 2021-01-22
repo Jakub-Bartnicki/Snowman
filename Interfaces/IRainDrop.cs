@@ -4,8 +4,9 @@ namespace Snowman.Interfaces
 {
     public interface IRainDrop
     {
-        public int Health { get; set; }
-        public int Points { get; set; }
-        public String Effect { get; set; }
+        public int Health { get; }
+        public int Points { get; }
+        // Snowman state after contact
+        public String Effect { get; }
     }
 }

@@ -14,9 +14,7 @@ namespace Snowman
         public static Game Game { get { return game; } }
 
         public App() : base()
-        {
-            Theme.getInstance();
-        }
+        { }
 
         public static IGameBuilder GameBuilder
         {
