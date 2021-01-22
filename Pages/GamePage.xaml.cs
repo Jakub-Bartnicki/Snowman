@@ -42,46 +42,55 @@ namespace Snowman.Pages
             Application.Current.MainWindow.KeyDown += new KeyEventHandler(KeyIsDown);
             Application.Current.MainWindow.KeyUp += new KeyEventHandler(KeyIsUp);
 
+            // Set interval GameLoop
             gameTimer.Interval = TimeSpan.FromMilliseconds(6);
             gameTimer.Tick += GameLoop;
             gameTimer.Start();
 
             gameScreen.Focus();
 
+            // Set starting snowman image
             playerImage.ImageSource = App.Game.Snowman.Img;
             snowman.Fill = playerImage;
 
-
-            if (App.Game.Difficulty == 0) // easy difficulty
+            // Set game difficulty (item spawn rate)
+            if (App.Game.Difficulty == 0)
             {
-                rainDropSpawnFrequency = 20;
-            } else if (App.Game.Difficulty == 1) // normal difficulty
+                rainDropSpawnFrequency = 20;        // easy difficulty
+            } 
+            else if (App.Game.Difficulty == 1)
             {
-                rainDropSpawnFrequency = 10;
-            } else // hard difficulty
+                rainDropSpawnFrequency = 10;        // normal difficulty
+            } 
+            else
             {
-                rainDropSpawnFrequency = 5;
+                rainDropSpawnFrequency = 5;         // hard difficulty
             }
         }
 
         private void GameLoop(object sender, EventArgs e)
         {
+            // Set snowman image
             playerImage.ImageSource = App.Game.Snowman.Img;
             snowman.Fill = playerImage;
 
+            // Set current snowman position
             playerHitBox = new Rect(Canvas.GetLeft(snowman), Canvas.GetTop(snowman), snowman.Width, snowman.Height);
 
             rainDropCounter -= 1;
 
+            // Put health and points values on screen
             showPoints.Content = "Points: " + points;
             showHealth.Content = "Health: " + App.Game.Snowman.Health;
 
+            // End game if snowman have no health
             if(App.Game.Snowman.Health == 0)
             {
                 EndGame();
                 return;
             }
 
+            // Add falling item depending on the difficulty level
             if (rainDropCounter <= 0)
             {
                 draw = rand.Next(1, 101);
@@ -99,6 +108,7 @@ namespace Snowman.Pages
                 rainDropCounter = rainDropSpawnFrequency;
             }
 
+            // Check if snowman can move
             if (App.Game.Snowman.Moveable)
             {
                 if (goLeft == true && Canvas.GetLeft(snowman) > 0)
@@ -111,27 +121,31 @@ namespace Snowman.Pages
                 }
             }
 
-
+            // Select falling items to delete
             foreach (var rect in map)
             {
                 Canvas.SetTop(rect.Key, Canvas.GetTop(rect.Key) + rainDropSpeed);
 
+                // Item fell outside the play area
                 if (Canvas.GetTop(rect.Key) > 650)
                 {
                     itemRemover.Add(rect.Key);
                 }
                 else
                 {
+                    // Set current item position
                     Rect rainDropHitBox = new Rect(Canvas.GetLeft(rect.Key), Canvas.GetTop(rect.Key), rect.Key.Width, rect.Key.Height);
 
+                    // Snowman interaction with item
                     if (playerHitBox.IntersectsWith(rainDropHitBox))
                     {
                         itemRemover.Add(rect.Key);
-                        SnowmanReaction(rect.Value.Health, rect.Value.Points, rect.Value.Effect);
+                        SnowmanReaction(rect.Value.Health, rect.Value.Points, rect.Value.Effect);   
                     }
                 }
             }
 
+            // Deleting falling items
             foreach (Rectangle i in itemRemover)
             {
                 gameScreen.Children.Remove(i);
@@ -140,9 +154,11 @@ namespace Snowman.Pages
 
         }
 
-        // Checking what type of game we play
+
+        // Snowman interaction with items
         private void SnowmanReaction(int health, int points, String effect)
         {
+            // Buffed game interaction
             if (App.Game.Buffs)
             {
                 if (effect.Equals("buffed"))
@@ -152,16 +168,18 @@ namespace Snowman.Pages
 
                 SetSnowmanAttributes(health, points, effect);
 
-            } else //If it is normal game set health and points
+            }
+            else // Normal game interaction
             {
                 App.Game.Snowman.Health += health;
                 this.points += points;
             }
         }
 
-        // Changing health and points in Buffed Game
+        // Changing health and points in buffed game
         private void SetSnowmanAttributes(int health, int points, String effect)
         {
+            // Buffed snowman interaction with items
             if (App.Game.Snowman.Buffed)
             {
                 if (effect.Equals("buffed"))
@@ -179,6 +197,7 @@ namespace Snowman.Pages
                     this.points += points;
                 }
             }
+            // Other snowman interactions with items
             else
             {
                 App.Game.Snowman.Health += health;
@@ -220,10 +239,12 @@ namespace Snowman.Pages
                 return;
             }
 
+            // Selecting new item image
             ImageBrush rainDropSprite = new ImageBrush();
             rainDropSprite.ImageSource = rainDrop.RainDropView.Image;
-            
-            Rectangle newRainDrop = new Rectangle
+
+            // Creating new rectangle to put item on screen
+            Rectangle rainDropRectangle = new Rectangle
             {
                 Tag = "raindrop",
                 Height = 50,
@@ -231,11 +252,13 @@ namespace Snowman.Pages
                 Fill = rainDropSprite
             };
 
-            Canvas.SetTop(newRainDrop, -100);
-            Canvas.SetLeft(newRainDrop, rand.Next(100, 1100));
-            gameScreen.Children.Add(newRainDrop);
+            // Draw starting position of created item
+            Canvas.SetTop(rainDropRectangle, -100);
+            Canvas.SetLeft(rainDropRectangle, rand.Next(100, 1100));
+            gameScreen.Children.Add(rainDropRectangle);
 
-            map.Add(newRainDrop, rainDrop);
+            // Saving rectangle with concrete item
+            map.Add(rainDropRectangle, rainDrop);
         }
 
         // Method showing score and back to menu button after the game
