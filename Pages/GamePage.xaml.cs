@@ -90,6 +90,7 @@ namespace Snowman.Pages
                 return;
             }
 
+            // Adding item after rainDropSpawnFrequency ticks
             if (rainDropCounter <= 0)
             {
                 AddItem();
