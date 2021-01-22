@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+﻿using System.Windows.Media.Imaging;
 
 namespace Snowman.RainDropFactory
 {

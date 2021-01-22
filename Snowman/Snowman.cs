@@ -1,11 +1,6 @@
-﻿using Snowman.Pages;
-using Snowman.States;
+﻿using Snowman.States;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
@@ -63,22 +58,26 @@ namespace Snowman.Snowman
             this.Health += amountOfHealth;
         }
 
+        // Setting the state of snowman
         public void TransitionTo(State state)
         {
             this.state = state;
             this.state.setSnowman(this);
         }
 
+        // Changing snowman to blocked state
         public void blockSnowman() 
         {
             this.state.block();
         }
-        
+
+        // Changing snowman to normal state
         public void normalizeSnowman() 
         {
             this.state.normalize();
         }
 
+        // Changing snowman to buffed state
         public void buffSnowman()
         {
             this.state.buff();

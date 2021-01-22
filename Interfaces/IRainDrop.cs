@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Snowman.Interfaces
 {
@@ -8,5 +6,6 @@ namespace Snowman.Interfaces
     {
         public int Health { get; set; }
         public int Points { get; set; }
+        public String Effect { get; set; }
     }
 }

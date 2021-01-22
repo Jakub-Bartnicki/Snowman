@@ -1,12 +1,5 @@
-﻿using Snowman.GameLevel;
-using Snowman.Interfaces;
+﻿using Snowman.Interfaces;
 using Snowman.Themes;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Snowman

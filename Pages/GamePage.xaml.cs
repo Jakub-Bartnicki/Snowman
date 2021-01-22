@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
-using System.IO;
 using Snowman.RainDropFactory;
-using System.Linq;
 
 namespace Snowman.Pages
 {
@@ -93,11 +85,11 @@ namespace Snowman.Pages
             if (rainDropCounter <= 0)
             {
                 draw = rand.Next(1, 101);
-                if (draw >=1 && draw < 60)
+                if (draw >=1 && draw < 50)
                 {
                     MakeRainDrop("NeutralRainDrop");
                 }
-                else if (draw >= 60 && draw < 65)
+                else if (draw >= 50 && draw < 55)
                 {
                     MakeRainDrop("PositiveRainDrop");
                 } else
@@ -135,7 +127,7 @@ namespace Snowman.Pages
                     if (playerHitBox.IntersectsWith(rainDropHitBox))
                     {
                         itemRemover.Add(rect.Key);
-                        SnowmanState(rect.Value.Health, rect.Value.Points, rect.Value.Effect);
+                        SnowmanReaction(rect.Value.Health, rect.Value.Points, rect.Value.Effect);
                     }
                 }
             }
@@ -148,11 +140,31 @@ namespace Snowman.Pages
 
         }
 
+        // Checking what type of game we play
         private void SnowmanReaction(int health, int points, String effect)
+        {
+            if (App.game.Buffs)
+            {
+                if (effect.Equals("buffed"))
+                    App.game.Snowman.buffSnowman();
+                else if (effect.Equals("blocked"))
+                    App.game.Snowman.blockSnowman();
+
+                SetSnowmanAttributes(health, points, effect);
+
+            } else //If it is normal game set health and points
+            {
+                App.game.Snowman.Health += health;
+                this.points += points;
+            }
+        }
+
+        // Changing health and points in Buffed Game
+        private void SetSnowmanAttributes(int health, int points, String effect)
         {
             if (App.game.Snowman.Buffed)
             {
-                if(effect.Equals("buffed"))
+                if (effect.Equals("buffed"))
                 {
                     App.game.Snowman.Health += health;
                     this.points += points;
@@ -175,24 +187,7 @@ namespace Snowman.Pages
 
         }
 
-        private void SnowmanState(int health, int points, String effect)
-        {
-            if (App.game.Buffs)
-            {
-                if (effect.Equals("buffed"))
-                    App.game.Snowman.buffSnowman();
-                else if (effect.Equals("blocked"))
-                    App.game.Snowman.blockSnowman();
-
-                SnowmanReaction(health, points, effect);
-
-            } else
-            {
-                App.game.Snowman.Health += health;
-                this.points += points;
-            }
-        }
-
+        // Method called when player press button
         public void KeyIsDown(object sender, KeyEventArgs e)
         {
             // Game.Snowman.startMove(sender, e);
@@ -200,13 +195,14 @@ namespace Snowman.Pages
             if (e.Key == Key.Right) goRight = true;
         }
 
+        // Method called when player release button
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
-            // Game.Snowman.endMove(sender, e);
             if (e.Key == Key.Left) goLeft = false;
             if (e.Key == Key.Right) goRight = false;
         }
 
+        // Making falling objects
         private void MakeRainDrop(string rainDropType)
         {
             RainDrop rainDrop;
@@ -242,6 +238,7 @@ namespace Snowman.Pages
             map.Add(newRainDrop, rainDrop);
         }
 
+        // Method showing score and back to menu button after the game
         private void EndGame()
         {
             endGameText.Content = "Your score: ";
@@ -253,6 +250,7 @@ namespace Snowman.Pages
             backButton.Click += backButton_Click;
         }
 
+        // Navigation to menu after clicking back button
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new MenuPage());

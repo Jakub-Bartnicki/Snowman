@@ -1,7 +1,4 @@
-﻿using Snowman.Snowman;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Timers;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -18,13 +15,15 @@ namespace Snowman.States
         {
             blockTime();
         }
+
+        // Refresh snowman block time
         public override void block()
         {
-            // Refresh block time
             aTimer.Enabled = false;
             blockTime();
         }
 
+        // Set snowman to buffed state
         public override void buff()
         {
             aTimer.Enabled = false;
@@ -34,6 +33,7 @@ namespace Snowman.States
             this.Snowman.TransitionTo(new BuffedState());
         }
 
+        // Set snowman to normal state
         public override void normalize()
         {
             this.Snowman.Img = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(Application.Current.MainWindow), "../Images/snowman.png"));
@@ -42,6 +42,7 @@ namespace Snowman.States
             this.Snowman.TransitionTo(new NormalState());
         }
 
+        // Timer to block the snowman for a while
         public void blockTime()
         {
             aTimer.Interval = 1000;
@@ -53,6 +54,7 @@ namespace Snowman.States
             aTimer.Enabled = true;
         }
 
+        // Unblock snowman method called from blockTime() after set time
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             aTimer.Enabled = false;
