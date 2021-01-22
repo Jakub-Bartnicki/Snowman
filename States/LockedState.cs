@@ -9,7 +9,7 @@ namespace Snowman.States
 {
     sealed class LockedState : State
     {
-        private static Timer aTimer = new System.Timers.Timer();
+        private static Timer aTimer = new Timer();
 
         public LockedState()
         {
@@ -55,7 +55,7 @@ namespace Snowman.States
         }
 
         // Unblock snowman method called from blockTime() after set time
-        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             aTimer.Enabled = false;
             Application.Current.Dispatcher.Invoke(normalize, DispatcherPriority.ContextIdle);

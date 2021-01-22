@@ -9,7 +9,7 @@ namespace Snowman.States
 {
     sealed class BuffedState : State
     {
-        private static Timer aTimer = new System.Timers.Timer();
+        private static Timer aTimer = new Timer();
 
         public BuffedState()
         {
@@ -26,7 +26,7 @@ namespace Snowman.States
             aTimer.Enabled = false;
             blockTime();
         }
-
+        
         // Set snowman to normal state
         public override void normalize()
         {
@@ -49,7 +49,7 @@ namespace Snowman.States
         }
 
         // Turn off snowman buff method called from blockTime() after set time
-        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             aTimer.Enabled = false;
             Application.Current.Dispatcher.Invoke(normalize, DispatcherPriority.ContextIdle);

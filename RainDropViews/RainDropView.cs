@@ -13,7 +13,6 @@ namespace Snowman.RainDropViews
             get { return image; } 
             set { image = value; } 
         }
-        public Type RainDropType { get; set; }
 
         public RainDropView(BitmapImage image)
         {

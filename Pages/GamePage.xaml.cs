@@ -178,7 +178,7 @@ namespace Snowman.Pages
 
 
         // Snowman interaction with items
-        private void SnowmanReaction(int health, int points, String effect)
+        private void SnowmanReaction(int health, int points, string effect)
         {
             // Buffed game interaction
             if (App.Game.Buffs)
@@ -229,7 +229,7 @@ namespace Snowman.Pages
         }
 
         // Method called when player press button
-        public void KeyIsDown(object sender, KeyEventArgs e)
+        private void KeyIsDown(object sender, KeyEventArgs e)
         {
             // Game.Snowman.startMove(sender, e);
             if (e.Key == Key.Left) goLeft = true;
@@ -237,7 +237,7 @@ namespace Snowman.Pages
         }
 
         // Method called when player release button
-        public void KeyIsUp(object sender, KeyEventArgs e)
+        private void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left) goLeft = false;
             if (e.Key == Key.Right) goRight = false;
@@ -288,9 +288,11 @@ namespace Snowman.Pages
         {
             endGameText.Content = "Your score: ";
             endGamePoints.Content = points;
+
             backButton.Content = "BACK";
             backButton.Width = 200;
             backButton.Height = 30;
+
             gameTimer.Tick -= GameLoop;
             backButton.Click += backButton_Click;
         }
