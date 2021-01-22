@@ -7,6 +7,6 @@ namespace Snowman.Interfaces
         public int Health { get; }
         public int Points { get; }
         // Snowman state after contact
-        public String Effect { get; }
+        public string Effect { get; }
     }
 }
